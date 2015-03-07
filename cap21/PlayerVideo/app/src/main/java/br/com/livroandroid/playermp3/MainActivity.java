@@ -12,7 +12,6 @@ import android.widget.VideoView;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-
     private static final String TAG = "livroandroid";
     //Classe que encapsula o MediaPlayer
     private VideoView videoView;
@@ -57,5 +56,4 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // Libera recursos do MediaPlayer
         videoView.stopPlayback();
     }
-
 }

@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-
     private static final String TAG = "livro";
     //Classe que encapsula o MediaPlayer
     private PlayerMp3 player = new PlayerMp3();
@@ -50,5 +49,4 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // Libera recursos do MediaPlayer
         player.close();
     }
-
 }
