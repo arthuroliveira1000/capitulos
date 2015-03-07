@@ -1,4 +1,4 @@
-package br.com.livroandroid.playermp3;
+package br.com.livroandroid.playervideo;
 
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
