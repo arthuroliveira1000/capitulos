@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
     private static final String TAG = "livro";
-    //Classe que encapsula o MediaPlayer
+    // Classe que encapsula o MediaPlayer
     private PlayerMp3 player = new PlayerMp3();
     private EditText text;
     @Override
@@ -19,7 +19,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
 
-        text = (EditText) findViewById(R.id.arquivo);
+        text = (EditText) findViewById(R.id.tArquivo);
 
         findViewById(R.id.start).setOnClickListener(this);
         findViewById(R.id.pause).setOnClickListener(this);
