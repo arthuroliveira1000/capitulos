@@ -2,38 +2,53 @@ package br.com.livroandroid.playermp3;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
+    private static final String TAG = "livro";
+    //Classe que encapsula o MediaPlayer
+    private PlayerMp3 player = new PlayerMp3();
+    private EditText text;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
         setContentView(R.layout.activity_main);
+
+        text = (EditText) findViewById(R.id.arquivo);
+
+        findViewById(R.id.start).setOnClickListener(this);
+        findViewById(R.id.pause).setOnClickListener(this);
+        findViewById(R.id.stop).setOnClickListener(this);
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    /**
+     * @see android.view.View.OnClickListener#onClick(android.view.View)
+     */
+    public void onClick(View view) {
+        try {
+            if (view.getId() == R.id.start) {
+                String mp3 = text.getText().toString();
+                player.start(mp3);
+            } else if (view.getId() == R.id.pause) {
+                player.pause();
+            } else if (view.getId() == R.id.stop) {
+                player.stop();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
-        return super.onOptionsItemSelected(item);
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Libera recursos do MediaPlayer
+        player.close();
+    }
+
 }
