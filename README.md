@@ -1,4 +1,4 @@
-# Capitulos
+# Livro Google Android 4ª edição
 
 Capítulos de exemplo do Livro Google Android (http://livroandroid.com.br/)
 
