@@ -1,6 +1,7 @@
 package br.com.livroandroid.audiorecorder;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
@@ -60,6 +61,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             // Retorna:
             // Uri: content://media/external/audio/media/102
             uri = data.getData();
+
+            //MediaPlayer player = MediaPlayer.create(this, uri);
+            //player.start();
 
             play();
         }
