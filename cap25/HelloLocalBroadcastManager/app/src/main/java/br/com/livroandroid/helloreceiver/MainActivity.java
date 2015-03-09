@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,11 +33,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.btEnviar).setOnClickListener(this);
 
         // Registra o receiver
-        registerReceiver(helloReceiver,new IntentFilter("BINGO"));
+        LocalBroadcastManager m = LocalBroadcastManager.getInstance(this);
+        m.registerReceiver(helloReceiver, new IntentFilter("BINGO"));
     }
     @Override
     public void onClick(View v) {
-        sendBroadcast(new Intent("BINGO"));
+        LocalBroadcastManager m = LocalBroadcastManager.getInstance(this);
+        m.sendBroadcast(new Intent("BINGO"));
         Toast.makeText(this,"Intent enviada!",Toast.LENGTH_SHORT).show();
     }
 
@@ -44,6 +47,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         // Cancela o receiver
-        unregisterReceiver(helloReceiver);
+        LocalBroadcastManager m = LocalBroadcastManager.getInstance(this);
+        m.unregisterReceiver(helloReceiver);
     }
 }
