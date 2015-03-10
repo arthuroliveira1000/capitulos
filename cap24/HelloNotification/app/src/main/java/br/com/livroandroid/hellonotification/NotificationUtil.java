@@ -9,7 +9,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 /**
- * Classe utilitária para criar notificações
+ * Classe utilitária para criar notificações.
  */
 public class NotificationUtil {
 
