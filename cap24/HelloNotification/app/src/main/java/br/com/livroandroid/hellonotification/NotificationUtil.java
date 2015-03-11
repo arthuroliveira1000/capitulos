@@ -85,10 +85,9 @@ public class NotificationUtil {
         b.setContentIntent(p); // Intent que será chamada ao clicar na notificação.
         b.setAutoCancel(true); // Auto cancela a notificação ao clicar nela
 
-        // Ação customizada
+        // Ação customizada (deixei a mesma intent para os dois)
         b.addAction(R.drawable.ic_acao_pause, "Pause", actionIntent);
         b.addAction(R.drawable.ic_acao_play, "Play", actionIntent);
-        b.addAction(R.drawable.ic_acao_stop, "Stop", actionIntent);
 
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);
         nm.notify(id, b.build());

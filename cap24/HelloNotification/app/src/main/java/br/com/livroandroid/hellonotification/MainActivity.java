@@ -66,9 +66,9 @@ public class MainActivity extends ActionBarActivity {
     public void onClickNotificacaoComAcao(View view) {
         int id = 3;
         Intent intent = new Intent(this,MensagemActivity.class);
-        intent.putExtra("msg","Olá Leitor, como vai?");
-        String contentTitle = "Nova mensagem com ação";
-        String contentText = "Você possui 3 novas mensagens";
+        intent.putExtra("msg","Música legal.");
+        String contentTitle = "Nome da música";
+        String contentText = "Nome do artista";
         NotificationUtil.createWithAction(this, intent, contentTitle, contentText, id);
     }
 }
