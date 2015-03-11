@@ -86,7 +86,9 @@ public class NotificationUtil {
         b.setAutoCancel(true); // Auto cancela a notificação ao clicar nela
 
         // Ação customizada
-        b.addAction(R.mipmap.ic_launcher, "Ação Customizada", actionIntent);
+        b.addAction(R.drawable.ic_acao_pause, "Pause", actionIntent);
+        b.addAction(R.drawable.ic_acao_play, "Play", actionIntent);
+        b.addAction(R.drawable.ic_acao_stop, "Stop", actionIntent);
 
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);
         nm.notify(id, b.build());

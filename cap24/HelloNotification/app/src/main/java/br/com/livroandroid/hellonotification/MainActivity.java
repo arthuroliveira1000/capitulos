@@ -43,32 +43,32 @@ public class MainActivity extends ActionBarActivity {
 
     public void onClickNotificacaoSimples(View view) {
         int id = 1;
-        String contentTitle = "Nova mensagem";
-        String contentText = "Você possui 3 novas mensagens";
         Intent intent = new Intent(this,MensagemActivity.class);
         intent.putExtra("msg","Olá Leitor, como vai?");
-        NotificationUtil.create(this,intent,contentTitle,contentText,1);
+        String contentTitle = "Nova mensagem simples";
+        String contentText = "Você possui uma nova mensagem";
+        NotificationUtil.create(this,intent,contentTitle,contentText,id);
     }
 
     public void onClickNotificacaoBig(View view) {
         int id = 2;
-        String contentTitle = "Nova mensagem";
-        String contentText = "Você possui 3 novas mensagens";
         Intent intent = new Intent(this,MensagemActivity.class);
         intent.putExtra("msg","Olá Leitor, como vai?");
-        List<String> lines = new ArrayList<>();
-        lines.add("Mensagem 1");
-        lines.add("Mensagem 2");
-        lines.add("Mensagem 3");
-        NotificationUtil.createBig(this, intent, contentTitle, contentText, lines, id);
+        List<String> list = new ArrayList<>();
+        list.add("Mensagem 1");
+        list.add("Mensagem 2");
+        list.add("Mensagem 3");
+        String contentTitle = "Nova mensagem big";
+        String contentText = String.format("Você possui %s novas mensagens",list.size());
+        NotificationUtil.createBig(this, intent, contentTitle, contentText, list, id);
     }
 
     public void onClickNotificacaoComAcao(View view) {
         int id = 3;
-        String contentTitle = "Nova mensagem";
-        String contentText = "Você possui 3 novas mensagens";
         Intent intent = new Intent(this,MensagemActivity.class);
         intent.putExtra("msg","Olá Leitor, como vai?");
-        NotificationUtil.createWithAction(this, intent, contentTitle, contentText, 1);
+        String contentTitle = "Nova mensagem com ação";
+        String contentText = "Você possui 3 novas mensagens";
+        NotificationUtil.createWithAction(this, intent, contentTitle, contentText, id);
     }
 }
