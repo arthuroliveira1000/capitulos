@@ -134,4 +134,9 @@ public static void criarNotificacaoCompleta(Context ctx, String texto, int id) {
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);
         nm.cancel(id);
     }
+
+    public static void cancellAll(Context context) {
+        NotificationManagerCompat nm = NotificationManagerCompat.from(context);
+        nm.cancelAll();
+    }
 }
