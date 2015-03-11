@@ -73,9 +73,6 @@ public class NotificationUtil {
     public static void createWithAction(Context context, Intent intent, String contentTitle, String contentText, int id) {
         PendingIntent p = getPendingIntent(context, intent, id);
 
-        PendingIntent actionIntent = PendingIntent.getBroadcast(
-                context, 0, new Intent(ACTION_VISUALIZAR), 0);
-
         // Cria a notificação
         NotificationCompat.Builder b = new NotificationCompat.Builder(context);
         b.setDefaults(Notification.DEFAULT_ALL); // Ativa configurações padrão
@@ -86,6 +83,8 @@ public class NotificationUtil {
         b.setAutoCancel(true); // Auto cancela a notificação ao clicar nela
 
         // Ação customizada (deixei a mesma intent para os dois)
+        PendingIntent actionIntent = PendingIntent.getBroadcast(
+                context, 0, new Intent(ACTION_VISUALIZAR), 0);
         b.addAction(R.drawable.ic_acao_pause, "Pause", actionIntent);
         b.addAction(R.drawable.ic_acao_play, "Play", actionIntent);
 
