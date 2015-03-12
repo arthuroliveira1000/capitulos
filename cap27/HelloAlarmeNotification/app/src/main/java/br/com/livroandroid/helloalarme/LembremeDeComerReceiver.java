@@ -19,7 +19,8 @@ public class LembremeDeComerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent it) {
         Log.d(TAG,"Você precisa comer: " + new Date());
 
-        Intent intent = new Intent("AHAHAHA");
+        Intent intent = new Intent(context,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         NotificationUtil.notify(context,1,intent);
     }
 }

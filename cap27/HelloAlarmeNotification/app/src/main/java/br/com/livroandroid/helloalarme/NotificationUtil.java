@@ -30,21 +30,12 @@ public class NotificationUtil {
                 .setContentText("Que tal uma fruta?")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.drawable.maca))
-                .setNumber(99);
+                .setAutoCancel(true);
 
         // Dispara a notification
         Notification n = builder.build();
         manager.notify(id, n);
 
         Log.d(TAG,"Notification criada com sucesso");
-    }
-
-    public static void cancel(Context context, int id) {
-        NotificationManager manager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        manager.cancel(id);
-
-        Log.d(TAG,"Notification cancelada com sucesso");
     }
 }
