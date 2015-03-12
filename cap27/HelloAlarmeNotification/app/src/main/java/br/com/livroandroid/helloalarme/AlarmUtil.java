@@ -22,7 +22,7 @@ public class AlarmUtil {
     // Agenda o alarme e repete a cada x millisegundos
     public static void schedule(Context context, Intent intent, long time, long repeat) {
         // Intent para disparar o broadcast
-        PendingIntent p = PendingIntent.getBroadcast(context, 0, intent, 0);
+        PendingIntent p = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Agenda o alarme
         AlarmManager alarme = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
