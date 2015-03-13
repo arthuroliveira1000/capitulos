@@ -18,5 +18,8 @@ public class LembremeDeComerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d(TAG,"Você precisa comer: " + new Date());
+
+        Intent notifIntent = new Intent(context,MainActivity.class);
+        NotificationUtil.notify(context, 1, notifIntent);
     }
 }

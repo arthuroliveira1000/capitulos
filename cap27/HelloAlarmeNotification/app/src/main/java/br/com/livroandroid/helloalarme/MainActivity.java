@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         if (v.getId() == R.id.btAgendar) {
             Calendar c = Calendar.getInstance();
             c.setTimeInMillis(System.currentTimeMillis());
-            c.add(Calendar.SECOND, 1);
+            c.add(Calendar.SECOND, 5);
             long time = c.getTimeInMillis();
 
             AlarmUtil.schedule(this, intent, time, 10 * 1000);
