@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
     public void onClickAgendar(View view) {
         Intent intent = new Intent(LembremeDeComerReceiver.ACTION);
         // Agenda para daqui a 5 seg
-        AlarmUtil.schedule(this, getIntent(), getTime());
+        AlarmUtil.schedule(this, intent, getTime());
         //sendBroadcast(intent);
         Toast.makeText(this,"Alarme agendado.",Toast.LENGTH_SHORT).show();
     }
@@ -37,13 +37,13 @@ public class MainActivity extends ActionBarActivity {
     public void onClickAgendarComRepeat(View view) {
         Intent intent = new Intent(LembremeDeComerReceiver.ACTION);
         // Agenda para daqui a 5 seg, repete a cada 30 seg
-        AlarmUtil.scheduleRepeat(this, getIntent(), getTime(), 30 * 1000);
+        AlarmUtil.scheduleRepeat(this, intent, getTime(), 30 * 1000);
         Toast.makeText(this,"Alarme agendado com repetir.",Toast.LENGTH_SHORT).show();
     }
 
     public void onClickCancelar(View view) {
         Intent intent = new Intent(LembremeDeComerReceiver.ACTION);
-        AlarmUtil.cancel(this,getIntent());
+        AlarmUtil.cancel(this,intent);
         Toast.makeText(this,"Alarme cancelado",Toast.LENGTH_SHORT).show();
     }
 }
