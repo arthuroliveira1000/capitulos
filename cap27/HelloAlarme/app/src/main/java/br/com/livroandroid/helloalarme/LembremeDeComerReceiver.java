@@ -13,6 +13,7 @@ import java.util.Date;
 public class LembremeDeComerReceiver extends BroadcastReceiver {
 
     private static final String TAG = "livroandroid";
+    public static final String ACTION = "br.com.livroandroid.helloalarme.LEMBREME_DE_COMER";
 
     @Override
     public void onReceive(Context context, Intent intent) {

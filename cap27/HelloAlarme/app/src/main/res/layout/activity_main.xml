@@ -10,15 +10,22 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btAgendar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agendar" />
+        android:text="Agendar para 5 segundos"
+        android:onClick="onClickAgendar"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agendar para 5 seg e repetir a cada 30 seg"
+        android:onClick="onClickAgendarComRepeat" />
 
     <Button
         android:id="@+id/btCancelar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancelar" />
+        android:text="Cancelar"
+        android:onClick="onClickCancelar"/>
 
 </LinearLayout>
