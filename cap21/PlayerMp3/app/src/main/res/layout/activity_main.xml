@@ -24,19 +24,22 @@
             android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_start" />
+            android:src="@drawable/img_start"
+            android:onClick="onClickStart"/>
 
         <ImageButton
             android:id="@+id/pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_pause" />
+            android:src="@drawable/img_pause"
+            android:onClick="onClickPause"/>
 
         <ImageButton
             android:id="@+id/stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_stop" />
+            android:src="@drawable/img_stop"
+            android:onClick="onClickStop"/>
     </LinearLayout>
 
 </LinearLayout>
