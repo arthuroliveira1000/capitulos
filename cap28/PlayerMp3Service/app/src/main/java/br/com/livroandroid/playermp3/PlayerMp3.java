@@ -13,7 +13,7 @@ import android.util.Log;
 public class PlayerMp3 implements OnCompletionListener {
 	private static final String CATEGORIA = "livroandroid";
 	private static final int NOVO 		= 0;
-	private static final int INICIADO 	= 1;
+	private static final int TOCANDO 	= 1;
 	private static final int PAUSADO 	= 2;
 	private static final int PARADO 	= 3;
 	// Começaa o status zerado
@@ -35,7 +35,7 @@ public class PlayerMp3 implements OnCompletionListener {
 
 		try {
 			switch (status) {
-				case INICIADO:
+				case TOCANDO:
 					player.stop();
 				case PARADO:
 					player.reset();
@@ -47,7 +47,7 @@ public class PlayerMp3 implements OnCompletionListener {
 					break;
 			}
 
-			status = INICIADO;
+			status = TOCANDO;
 		} catch (Exception e) {
 			Log.e(CATEGORIA,e.getMessage(),e);
 		}
@@ -67,11 +67,16 @@ public class PlayerMp3 implements OnCompletionListener {
 		stop();
 		player.release();
 		player = null;
+		status = NOVO;
 	}
 	/**
 	 * @see android.media.MediaPlayer.OnCompletionListener#onCompletion(android.media.MediaPlayer)
 	 */
 	public void onCompletion(MediaPlayer mp) {
+		status = NOVO;
 		Log.d(CATEGORIA, "Fim da música: " + mp3);
+	}
+	public boolean isPlaying() {
+		return status == TOCANDO || status == PAUSADO;
 	}
 }
