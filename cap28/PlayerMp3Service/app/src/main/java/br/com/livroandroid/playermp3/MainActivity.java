@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import livroandroid.lib.utils.NotificationUtil;
+
 
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = "livro";
@@ -79,7 +81,7 @@ public class MainActivity extends ActionBarActivity {
             unbindService(conexao);
             // Cria a notificação para o usuário voltar ao player.
             String mp3 = interfaceMp3.getMp3();
-            NotificationUtil.create(this,1,new Intent(this,MainActivity.class),"MP3 Player",mp3);
+            NotificationUtil.create(this, 1, new Intent(this, MainActivity.class),R.mipmap.ic_launcher, "MP3 Player", mp3);
         } else {
             // (*7*)
             Log.d(TAG, "Activity destruida. Para o serviço, pois não existe música tocando.");

@@ -1,9 +1,12 @@
 package br.com.livroandroid.helloservice;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
+
+import livroandroid.lib.utils.NotificationUtil;
 
 /**
  * Created by Ricardo Lecheta on 15/03/2015.
@@ -51,6 +54,11 @@ public class HelloService extends Service {
             } finally {
                 // Auto-Encerra o serviço se o contador chegou a 10
                 stopSelf();
+                // Cria uma notificação para avisar o usuário que terminou.
+                Context context = HelloService.this;
+                Intent intent = new Intent(context,MainActivity.class);
+                NotificationUtil.create(context, 1, intent, R.mipmap.ic_launcher, "HelloService", "Fim do serviço.");
+
             }
         }
     }
