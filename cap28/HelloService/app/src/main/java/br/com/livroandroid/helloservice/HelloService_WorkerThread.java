@@ -18,17 +18,16 @@ public class HelloService_WorkerThread extends Service {
     @Override
     public IBinder onBind(Intent i) {
         Log.d(TAG, "HelloService_WorkerThread.onBind()");
-        // Retorna null aqui porque não queremos interagir com o serviço
         return null;
     }
     @Override
     public void onCreate() {
-        // Chamado apenas uma vez (independente de quantas vezes é chamado o startService(intent)
+        // Chamado apenas uma vez (independente de quantas vezes Ã© chamado o startService(intent)
         Log.d(TAG, "HelloService_WorkerThread.onCreate()");
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // Chamado todas as vezes que é chamado o startService(intent)
+        // Chamado todas as vezes que Ã© chamado o startService(intent)
         Log.d(TAG, "HelloService_WorkerThread.onStartCommand(): " + startId);
         // Delega para uma thread
         WorkerThread workerThread = new WorkerThread(startId);
@@ -42,7 +41,6 @@ public class HelloService_WorkerThread extends Service {
         private int startId;
         private int count;
         public WorkerThread(int startId) {
-            // É dado um nome para a thread, assim podemos visualizá-lo no debug do Eclipse se necessário
             super("HelloService-"+startId);
             this.startId = startId;
             running = true;
@@ -63,13 +61,13 @@ public class HelloService_WorkerThread extends Service {
             }
             Log.d(TAG, "HelloService fim (" + startId + ")");
             // Auto-Encerra o service quando o processamento terminar
-            stopSelf(startId);
+            stopSelf(startId); // Encerra pelo startId
         }
     }
     @Override
     public void onDestroy() {
-        // Esta chamada é única para todas as threads (cada chamado ao startService)
-        // Ao encerrar o serviço, altera o flag para as threads pararem
+        // Esta chamada Ã© Ã©nica para todas as threads (cada chamado ao startService)
+        // Ao encerrar o serviÃ§o, altera o flag para as threads pararem
         for (WorkerThread workerThread : threads) {
             workerThread.running = false;
         }

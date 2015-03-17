@@ -18,7 +18,7 @@ public class HelloService extends Service {
     private boolean running;
     @Override
     public IBinder onBind(Intent i) {
-        // null aqui porque n„o queremos interagir com o serviÁo (veremos um exemplo disso depois)
+        // null aqui porque n√£o queremos interagir com o servi√ßo (veremos um exemplo disso depois)
         return null;
     }
     @Override
@@ -29,12 +29,12 @@ public class HelloService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "HelloService.onStartCommand() - Service iniciado: " + startId);
         count = 0;
-        // MÈtodo chamado depois do onCreate(), logo depois que o serviÁo È iniciado
-        // O par‚metro ãstartIdõ representa o identificador deste serviÁo
+        // M√©todo chamado depois do onCreate(), logo depois que o servi√ßo √© iniciado
+        // O par√Çmetro startId representa o identificador deste servi√ßo
         running = true;
         // Delega para uma thread
         new WorkerThread().start();
-        // Chama a implementaÁ„o da classe m„e
+        // Chama a implementa√ß√£o da superclasse
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -52,21 +52,21 @@ public class HelloService extends Service {
             } catch (InterruptedException e) {
                 Log.e(TAG,e.getMessage(),e);
             } finally {
-                // Auto-Encerra o serviÁo se o contador chegou a 10
+                // Auto-Encerra o servi√ßo se o contador chegou a 10
                 stopSelf();
-                // Cria uma notificaÁ„o para avisar o usu·rio que terminou.
+                // Cria uma notifica√ß√£o para avisar o usu√°rio que terminou.
                 Context context = HelloService.this;
                 Intent intent = new Intent(context,MainActivity.class);
-                NotificationUtil.create(context, 1, intent, R.mipmap.ic_launcher, "HelloService", "Fim do serviÁo.");
+                NotificationUtil.create(context, 1, intent, R.mipmap.ic_launcher, "HelloService", "Fim do servi√ßo.");
 
             }
         }
     }
     @Override
     public void onDestroy() {
-        // Ao encerrar o serviÁo, altere o flag para a thread parar (isto È importante para encerrar
-        // a thread caso alguÈm tenha chamado o stopService(intent)
+        // Ao encerrar o servi√ßo, altere o flag para a thread parar (isto √© importante para encerrar
+        // a thread caso algu√©m tenha chamado o stopService(intent)
         running = false;
-        Log.d(TAG, "HelloService.onDestroy() - Service destruÌdo");
+        Log.d(TAG, "HelloService.onDestroy() - Service destru√≠do");
     }
 }

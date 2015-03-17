@@ -17,8 +17,8 @@ public class ExemploServico_IntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         running = true;
-        // Este mÈtodo executa em uma thread
-        // Quando ele terminar, o mÈtodo stopSelf() ser· chamado automaticamente
+        // Este m√©todo executa em uma thread
+        // Quando ele terminar, o m√©todo stopSelf() ser√° chamado automaticamente
         int count = 0;
         while (running && count < MAX) {
             fazAlgumaCoisa();
@@ -39,7 +39,7 @@ public class ExemploServico_IntentService extends IntentService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Ao encerrar o serviÁo, altera o flag para a thread parar
+        // Ao encerrar o servi√ßo, altera o flag para o loop parar
         running = false;
         Log.d(TAG, "ExemploServico.onDestroy()");
     }
