@@ -10,17 +10,17 @@ import android.view.View;
 /**
  * Created by Ricardo Lecheta on 07/03/2015.
  */
-public class RectViewPixels extends View {
+public class RectViewFullWidthPixels extends View {
 
-    public RectViewPixels(Context context) {
+    public RectViewFullWidthPixels(Context context) {
         super(context);
     }
 
-    public RectViewPixels(Context context, AttributeSet attrs) {
+    public RectViewFullWidthPixels(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RectViewPixels(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RectViewFullWidthPixels(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -33,16 +33,7 @@ public class RectViewPixels extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint paint = new Paint();
-
-        // Quadrado somente com a borda para mostrar o tamanho total
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(2);
-        paint.setColor(Color.BLACK);
-        canvas.drawRect(0, 0, getWidth(), getHeight()-1, paint);
-
-        // Quadrado preenchendo incorretamente (com pixels)
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.BLUE);
-        canvas.drawRect(0, 0, 100, 100, paint);
+        paint.setColor(Color.LTGRAY);
+        canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
     }
 }

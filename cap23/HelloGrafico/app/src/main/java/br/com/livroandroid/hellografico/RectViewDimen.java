@@ -12,17 +12,17 @@ import android.view.View;
 /**
  * Created by Ricardo Lecheta on 07/03/2015.
  */
-public class RectViewDP extends View {
+public class RectViewDimen extends View {
 
-    public RectViewDP(Context context) {
+    public RectViewDimen(Context context) {
         super(context);
     }
 
-    public RectViewDP(Context context, AttributeSet attrs) {
+    public RectViewDimen(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RectViewDP(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RectViewDimen(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -34,18 +34,17 @@ public class RectViewDP extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint paint = new Paint();
-        paint.setColor(Color.GREEN);
+        paint.setColor(Color.RED);
         Log.d("livro","w:/h " + getWidth() + "/" + getHeight());
-        canvas.drawRect(0, 0, toPixels(100), toPixels(100), paint);
+        canvas.drawRect(0, 0, getDimen(R.dimen.quadrado_width), getDimen(R.dimen.quadrado_height), paint);
         Log.d("livro","teste");
     }
 
     // Converte o valor de dp para pixels
-    public float toPixels(float dip) {
-        Resources r = getResources();
-        float densidade = r.getDisplayMetrics().density; // Densidade da tela
-        int px = (int) (dip * densidade + 0.5f);
-        return px;
+    public float getDimen(int resDimen) {
+        Resources res = getResources();
+        float d = res.getDimension(resDimen);
+        return d;
     }
 
 }
