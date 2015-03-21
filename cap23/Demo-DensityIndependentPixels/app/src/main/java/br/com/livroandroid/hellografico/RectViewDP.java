@@ -45,6 +45,7 @@ public class RectViewDP extends View {
         Resources r = getResources();
         float densidade = r.getDisplayMetrics().density; // Densidade da tela
         int px = (int) (dip * densidade + 0.5f);
+        Log.d("livro","Densidade: " + densidade);
         return px;
     }
 

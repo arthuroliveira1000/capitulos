@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <TableRow>
+    <ImageView
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:src="@drawable/oval" />
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/oval" />
-
-        <ImageView
-            android:layout_marginLeft="20dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/oval" />
-
-    </TableRow>
-
-</TableLayout>
+    <ImageView
+        android:layout_width="320px"
+        android:layout_height="320px"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/oval" />
+</LinearLayout>
