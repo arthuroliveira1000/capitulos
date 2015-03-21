@@ -33,7 +33,6 @@ public class MainActivity extends ListActivity {
                 "MapFragment por XML",
                 "MapFragment por API",
                 "MapFragment por XML + GPS",
-                "MapFragment por XML + Fused Location Provider",
                 "Rota",
                 "GeoCoder",
                 "Sair"
@@ -56,9 +55,6 @@ public class MainActivity extends ListActivity {
                     startActivity(new Intent(this, ExemploMapaV2_GPS.class));
                     break;
                 case 3:
-                    startActivity(new Intent(this, ExemploMapaV2_GPS_FusedLocation.class));
-                    break;
-                case 4:
                     String origem = "-25.443195, -49.280977 ";
                     String destino = "-25.442207, -49.278403";
                     // http://maps.googleapis.com/maps/api/directions/json?origin=-25.443195,-49.280977&destination=-25.442207, -49.278403&sensor=true&mode=driving
@@ -66,7 +62,7 @@ public class MainActivity extends ListActivity {
                     String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + origem + "&destination=" + destino + "&sensor=true&mode=driving";
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                     break;
-                case 5:
+                case 4:
                     testeGeoCoder();
                     break;
                 default:
