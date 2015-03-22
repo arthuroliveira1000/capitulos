@@ -71,8 +71,9 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
 
     @Override
     protected void onStop() {
-        // Desconecta
+        // Para o GPS
         stopLocationUpdates();
+        // Desconecta
         mGoogleApiClient.disconnect();
         super.onStop();
     }
