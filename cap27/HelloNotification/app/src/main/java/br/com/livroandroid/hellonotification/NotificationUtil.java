@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -33,11 +34,13 @@ public class NotificationUtil {
         // Cria a notificação
         NotificationCompat.Builder b = new NotificationCompat.Builder(context);
         b.setDefaults(Notification.DEFAULT_ALL); // Ativa configurações padrão
-        b.setSmallIcon(R.mipmap.ic_launcher); // Ícone
+        b.setSmallIcon(R.drawable.ic_notification_icon); // Ícone
         b.setContentTitle(contentTitle); // Título
         b.setContentText(contentText); // Mensagem
         b.setContentIntent(p); // Intent que será chamada ao clicar na notificação.
         b.setAutoCancel(true); // Auto cancela a notificação ao clicar nela
+
+        b.setColor(Color.GREEN);
 
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);
         nm.notify(id, b.build());
@@ -58,7 +61,7 @@ public class NotificationUtil {
         // Cria a notificação
         NotificationCompat.Builder b = new NotificationCompat.Builder(context);
         b.setDefaults(Notification.DEFAULT_ALL); // Ativa configurações padrão
-        b.setSmallIcon(R.mipmap.ic_launcher); // Ícone
+        b.setSmallIcon(R.drawable.ic_notification_icon); // Ícone
         b.setContentTitle(contentTitle); // Título
         b.setContentText(contentText); // Mensagem
         b.setContentIntent(p); // Intent que será chamada ao clicar na notificação.
@@ -76,7 +79,7 @@ public class NotificationUtil {
         // Cria a notificação
         NotificationCompat.Builder b = new NotificationCompat.Builder(context);
         b.setDefaults(Notification.DEFAULT_ALL); // Ativa configurações padrão
-        b.setSmallIcon(R.mipmap.ic_launcher); // Ícone
+        b.setSmallIcon(R.drawable.ic_notification_icon); // Ícone
         b.setContentTitle(contentTitle); // Título
         b.setContentText(contentText); // Mensagem
         b.setContentIntent(p); // Intent que será chamada ao clicar na notificação.
@@ -92,43 +95,49 @@ public class NotificationUtil {
         nm.notify(id, b.build());
     }
 
-    /*
-public static void criarNotificacaoCompleta(Context ctx, String texto, int id) {
-        Uri uriSom = Uri.parse("android.resource://"+
-                ctx.getPackageName() +"/raw/som_notificacao");
+    // Notification no Android 5.0 Lollipop (Cor vermelha e heads-up e tela de bloqueio)
+    public static void createHeadsUpNotification(Context context, Intent intent, String contentTitle, String contentText, int id) {
+        PendingIntent p = getPendingIntent(context, intent, id);
 
-        PendingIntent pitAcao = PendingIntent.getBroadcast(
-                ctx, 0, new Intent(ACAO_NOTIFICACAO), 0);
-        PendingIntent pitDelete = PendingIntent.getBroadcast(
-                ctx, 0, new Intent(ACAO_DELETE), 0);
+        // Cria a notificação
+        NotificationCompat.Builder b = new NotificationCompat.Builder(context);
+        b.setDefaults(Notification.DEFAULT_ALL); // Ativa configurações padrão
+        b.setSmallIcon(R.drawable.ic_notification_icon); // Ícone
+        b.setContentTitle(contentTitle); // Título
+        b.setContentText(contentText); // Mensagem
+        b.setContentIntent(p); // Intent que será chamada ao clicar na notificação.
+        b.setAutoCancel(true); // Auto cancela a notificação ao clicar nela
 
-        Bitmap largeIcon = BitmapFactory.decodeResource(
-                ctx.getResources(), R.drawable.ic_launcher);
+        // No Android 5.0
+        b.setColor(Color.RED);
+        // Heads-up notification
+        b.setFullScreenIntent(p,false);
+        // Privada se estiver na tela de bloqueio
+        b.setVisibility(NotificationCompat.VISIBILITY_SECRET);
 
-        PendingIntent pitNotificacao= criarPendingIntent(ctx, texto, id);
-
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(ctx)
-                        .setSmallIcon(R.drawable.ic_notificacao)
-                        .setContentTitle("Completa")
-                        .setContentText(texto)
-                        .setTicker("Chegou uma notificação")
-                        .setWhen(System.currentTimeMillis())
-                        .setLargeIcon(largeIcon)
-                        .setAutoCancel(true)
-                        .setContentIntent(pitNotificacao)
-                        .setDeleteIntent(pitDelete)
-                        .setLights(Color.BLUE, 1000, 5000)
-                        .setSound(uriSom)
-                        .setVibrate(new long[]{100, 500, 200, 800})
-                        .addAction(R.drawable.ic_acao_notificacao, "Ação Customizada", pitAcao)
-                        .setNumber(id)
-                        .setSubText("Subtexto");
-
-        NotificationManagerCompat nm = NotificationManagerCompat.from(ctx);
-        nm.notify(id, mBuilder.build());
+        NotificationManagerCompat nm = NotificationManagerCompat.from(context);
+        nm.notify(id, b.build());
     }
-     */
+
+    // Notification no Android 5.0 Lollipop (tela de bloqueio)
+    public static void createPrivateNotification(Context context, Intent intent, String contentTitle, String contentText, int id) {
+        PendingIntent p = getPendingIntent(context, intent, id);
+
+        // Cria a notificação
+        NotificationCompat.Builder b = new NotificationCompat.Builder(context);
+        b.setDefaults(Notification.DEFAULT_ALL); // Ativa configurações padrão
+        b.setSmallIcon(R.drawable.ic_notification_icon); // Ícone
+        b.setContentTitle(contentTitle); // Título
+        b.setContentText(contentText); // Mensagem
+        b.setContentIntent(p); // Intent que será chamada ao clicar na notificação.
+        b.setAutoCancel(true); // Auto cancela a notificação ao clicar nela
+
+        // PUBLIC, PRIVATE, SECRET
+        b.setVisibility(NotificationCompat.VISIBILITY_SECRET);
+
+        NotificationManagerCompat nm = NotificationManagerCompat.from(context);
+        nm.notify(id, b.build());
+    }
 
     public static void cancell(Context context, int id) {
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);

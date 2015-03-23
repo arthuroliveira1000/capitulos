@@ -19,6 +19,20 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Notificação Heads-up"
+        android:onClick="onClickNotificacaoHeadsUp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notificação Privada"
+        android:onClick="onClickNotificacaoPrivada"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Notificação Big"
         android:onClick="onClickNotificacaoBig"
         />

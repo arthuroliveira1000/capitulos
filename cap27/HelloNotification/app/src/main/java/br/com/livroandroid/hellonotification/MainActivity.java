@@ -50,6 +50,30 @@ public class MainActivity extends ActionBarActivity {
         NotificationUtil.create(this,intent,contentTitle,contentText,id);
     }
 
+    public void onClickNotificacaoHeadsUp(View view) {
+        int id = 1;
+        Intent intent = new Intent(this,MensagemActivity.class);
+        intent.putExtra("msg","Olá Leitor, como vai?");
+        String contentTitle = "Nova mensagem simples";
+        String contentText = "Você possui uma nova mensagem";
+        NotificationUtil.createHeadsUpNotification(this,intent,contentTitle,contentText,id);
+    }
+
+    public void onClickNotificacaoPrivada(View view) {
+        final int id = 1;
+        final Intent intent = new Intent(this,MensagemActivity.class);
+        intent.putExtra("msg","Olá Leitor, como vai?");
+        final String contentTitle = "Nova mensagem privada";
+        final String contentText = "Você possui uma nova mensagem privada";
+        Toast.makeText(this,"Desligue o cell e aguarde na tela de bloqueio",Toast.LENGTH_SHORT).show();
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                NotificationUtil.createPrivateNotification(getBaseContext(),intent,contentTitle,contentText,id);
+            }
+        },2000);
+    }
+
     public void onClickNotificacaoBig(View view) {
         int id = 2;
         Intent intent = new Intent(this,MensagemActivity.class);
@@ -71,4 +95,7 @@ public class MainActivity extends ActionBarActivity {
         String contentText = "Nome do artista";
         NotificationUtil.createWithAction(this, intent, contentTitle, contentText, id);
     }
+
+
+
 }
