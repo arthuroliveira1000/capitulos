@@ -26,8 +26,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notificação Privada"
-        android:onClick="onClickNotificacaoPrivada"
+        android:text="Notificação Lock-Screen"
+        android:onClick="onClickNotificacaoWithDelay"
         />
 
     <Button
