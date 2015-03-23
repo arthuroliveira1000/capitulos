@@ -113,7 +113,7 @@ public class NotificationUtil {
         // Heads-up notification
         b.setFullScreenIntent(p,false);
         // Privada se estiver na tela de bloqueio
-        b.setVisibility(NotificationCompat.VISIBILITY_SECRET);
+        b.setVisibility(NotificationCompat.VISIBILITY_PRIVATE);
 
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);
         nm.notify(id, b.build());

@@ -59,22 +59,6 @@ public class MainActivity extends ActionBarActivity {
         NotificationUtil.createHeadsUpNotification(this,intent,contentTitle,contentText,id);
     }
 
-    // Coloque o cell na lock-screen para ver a notification
-    public void onClickNotificacaoWithDelay(View view) {
-        view.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                int id = 1;
-                Intent intent = new Intent(getBaseContext(),MensagemActivity.class);
-                intent.putExtra("msg","Olá Leitor, como vai?");
-                String contentTitle = "Nova mensagem simples";
-                String contentText = "Você possui uma nova mensagem";
-                NotificationUtil.createHeadsUpNotification(getBaseContext(),intent,contentTitle,contentText,id);
-                Toast.makeText(getBaseContext(),"Coloque o cell na lock-screen",Toast.LENGTH_SHORT).show();
-            }
-        },2000);
-    }
-
     public void onClickNotificacaoBig(View view) {
         int id = 2;
         Intent intent = new Intent(this,MensagemActivity.class);
