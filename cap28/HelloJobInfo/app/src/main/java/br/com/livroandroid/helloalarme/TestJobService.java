@@ -31,6 +31,8 @@ import android.util.Log;
 
 import java.util.LinkedList;
 
+import livroandroid.lib.utils.NotificationUtil;
+
 
 /**
  * Service to handle callbacks from the JobScheduler. Requests scheduled with the JobScheduler
@@ -60,12 +62,19 @@ public class TestJobService extends JobService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand()");
+
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        Log.d(TAG, "onStartJob()");
+        Log.d(TAG, "onStartJob(): " + params.getJobId());
+
+        Intent notIntent = new Intent(this,MainActivity.class);
+        String title = "Job";
+        String contentTitle = "Hello Job: " + params.getJobId();
+        NotificationUtil.create(this, R.mipmap.ic_launcher, notIntent, R.mipmap.ic_launcher, title, contentTitle);
+
         return true;
     }
 
