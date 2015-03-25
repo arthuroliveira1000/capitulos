@@ -35,14 +35,13 @@ public class MainActivity extends ActionBarActivity {
     public void onClickAgendar(View view) {
         Intent intent = new Intent(LembremeDeComerReceiver.ACTION);
 
-        mServiceComponent = new ComponentName(this, TestJobService.class);
-        JobInfo uploadTask = new Builder(1,
-                mServiceComponent /* JobService component */)
-                .setRequiredNetworkCapabilities(NetworkType.UNMETERED)
-                .build();
+        ComponentName mServiceComponent = new ComponentName(this, TestJobService.class);
+        Builder builder = new Builder(1,mServiceComponent);
+        JobInfo job = builder.build();
+
         JobScheduler jobScheduler =
-                (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        jobScheduler.schedule(uploadTask);
+                (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        jobScheduler.schedule(job);
 
 
         Toast.makeText(this,"Job agendado.",Toast.LENGTH_SHORT).show();
