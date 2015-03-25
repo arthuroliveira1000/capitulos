@@ -23,6 +23,9 @@ repositories {
     maven {
         url "file:////r:/home/ricardo/gradle/rep"
     }
+    maven {
+        url "file:///home/ricardo/gradle/rep"
+    }
 }
 
 dependencies {

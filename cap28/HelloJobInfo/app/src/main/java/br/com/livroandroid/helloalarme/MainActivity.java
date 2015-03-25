@@ -3,6 +3,7 @@ package br.com.livroandroid.helloalarme;
 import android.app.AlarmManager;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
     public void onClickAgendar(View view) {
         Intent intent = new Intent(LembremeDeComerReceiver.ACTION);
 
+        mServiceComponent = new ComponentName(this, TestJobService.class);
         JobInfo uploadTask = new Builder(1,
                 mServiceComponent /* JobService component */)
                 .setRequiredNetworkCapabilities(NetworkType.UNMETERED)
