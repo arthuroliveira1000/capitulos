@@ -17,12 +17,6 @@
         android:onClick="onClickAgendar"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agendar e repetir a cada 30 seg"
-        android:onClick="onClickAgendarComRepeat" />
-
-    <Button
         android:id="@+id/btCancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

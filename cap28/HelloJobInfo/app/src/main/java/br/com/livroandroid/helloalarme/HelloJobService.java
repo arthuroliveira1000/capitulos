@@ -40,7 +40,7 @@ import livroandroid.lib.utils.NotificationUtil;
  * to the app's main activity to change the state of the UI.
  */
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class TestJobService extends JobService {
+public class HelloJobService extends JobService {
     private static final String TAG = "livroandroid";
 
     @Override
