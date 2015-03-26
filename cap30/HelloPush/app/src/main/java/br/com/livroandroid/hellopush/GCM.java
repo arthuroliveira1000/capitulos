@@ -48,6 +48,12 @@ public class GCM {
 		try {
 			Log.d(TAG, ">> GCM.registrar(): " + projectNumber);
 			String registrationId = gcm.register(projectNumber);
+
+            if(registrationId != null) {
+                // Salva nas prefs
+                saveRegistrationId(context,registrationId);
+            }
+
 			Log.d(TAG, "<< GCM.registrar() OK, registration id: " + registrationId);
 			return registrationId;
 		} catch (IOException e) {
@@ -67,15 +73,4 @@ public class GCM {
 			Log.e(TAG, "GCM erro ao desregistrar: " + e.getMessage(), e);
 		}
 	}
-
-	// Verifica se está registrado no GCM
-	public static boolean isRegistered(Context context) {
-		String registrationId = getRegistrationId(context);
-		if (registrationId == null || registrationId.trim().length() == 0) {
-			return false;
-		}
-		return true;
-	}
-
-
 }

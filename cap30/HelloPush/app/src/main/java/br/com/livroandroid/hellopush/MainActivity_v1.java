@@ -1,7 +1,6 @@
 package br.com.livroandroid.hellopush;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity_v1 extends ActionBarActivity {
 
     private static final String TAG = "livroandroid";
 
@@ -27,20 +26,7 @@ public class MainActivity extends ActionBarActivity {
             // Já está registrado
             String regId = GCM.getRegistrationId(this);
             setText(regId);
-
-            // Quando iniciar, lê a msg da notification
-            String msg = getIntent().getStringExtra("msg");
-            setText(msg);
         }
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-
-        // Quando iniciar, lê a msg da notification
-        String msg = intent.getStringExtra("msg");
-        setText(msg);
     }
 
     private Context getContext() {
@@ -55,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
                 public void run() {
                     TextView text = (TextView) findViewById(R.id.text);
                     text.setText(s);
-                    Log.d(TAG,s);
+                    Log.d(TAG, s);
                 }
             });
         }
@@ -114,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getContext(), "Toast: " + s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Toast: " + s, Toast.LENGTH_SHORT).show();
             }
         });
     }
