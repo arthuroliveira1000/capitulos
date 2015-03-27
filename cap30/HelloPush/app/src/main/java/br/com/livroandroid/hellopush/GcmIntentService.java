@@ -48,11 +48,9 @@ public class GcmIntentService extends IntentService {
     }
 
     private void onMessage(Bundle extras) {
-        // Por enquanto vamos apenas logar a mensagem no LogCat e fazer um hello
-        // world
+        // Lê a mensagem e mostra uma notificação
         String msg = extras.getString("msg");
         Log.d(TAG, msg);
-
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("msg", msg);
         NotificationUtil.create(this,1,intent,R.drawable.ic_notification_icon,"Nova mensagem",msg);

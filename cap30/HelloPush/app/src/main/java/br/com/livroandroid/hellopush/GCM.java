@@ -35,7 +35,7 @@ public class GCM {
 	}
 
 	// Salva o registration id nas prefs
-	public static void saveRegistrationId(Context context, String registrationId) {
+	private static void saveRegistrationId(Context context, String registrationId) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putString(PROPERTY_REG_ID, registrationId);

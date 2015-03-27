@@ -16,10 +16,8 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i(TAG, "GcmBroadcastReceiver.onReceive: " + intent.getExtras());
-        // Informa que o "GcmIntentService" vai tratar essa intent.
-        ComponentName comp = new ComponentName(context.getPackageName(), GcmIntentService.class.getName());
         // Inicia o service com WAKE LOCK.
-        startWakefulService(context, (intent.setComponent(comp)));
+        startWakefulService(context, new Intent(context,GcmIntentService.class));
         setResultCode(Activity.RESULT_OK);
     }
 }
