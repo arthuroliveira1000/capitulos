@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
+import livroandroid.lib.utils.NotificationUtil;
+
 public class MainActivity extends ActionBarActivity {
 
     private static final String TAG = "livroandroid";

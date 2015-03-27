@@ -24,9 +24,9 @@ public class GcmIntentService extends IntentService {
         Bundle extras = intent.getExtras();
         Log.i(TAG, "GcmIntentService.onHandleIntent: " + extras);
         GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
-        // Verifica o tipo da mensagem
-        String messageType = gcm.getMessageType(intent);
         if (!extras.isEmpty()) {
+            // Verifica o tipo da mensagem
+            String messageType = gcm.getMessageType(intent);
             // O extras.isEmpty() precisa ser chamado para ler o bundle
             // Verifica o tipo da mensagem, no futuro podemos ter mais tipos
             if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR.equals(messageType)) {
