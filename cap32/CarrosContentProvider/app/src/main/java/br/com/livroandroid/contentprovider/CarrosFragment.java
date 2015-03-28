@@ -1,0 +1,88 @@
+package br.com.livroandroid.contentprovider;
+
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+/**
+ * Utiliza o CursorLoader para ler o Content Provider dos carros
+ */
+public class CarrosFragment extends Fragment implements AdapterView.OnItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
+    Uri CARROS_URI = Uri.parse("content://br.com.livroandroid.carros/carros");
+
+    protected ListView listView;
+    private String tipo;
+
+    private CursorAdapter adapter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            this.tipo = getArguments().getString("tipo");
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_carros, container, false);
+
+        ListView listView = (ListView) view.findViewById(R.id.listView);
+
+        /*adapter = new SimpleCursorAdapter(getActivity(),
+                R.layout.adapter_carro, null,
+                new String[]{"nome"},
+                new int[]{R.id.tNome}, 0);*/
+
+        adapter = new CarroAdapter(getActivity());
+
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+
+        getLoaderManager().initLoader(0, null, this);
+
+        return view;
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(
+                getActivity(),
+                CARROS_URI, // URI
+                new String[] { "_id", "nome","url_foto"}, // colunas
+                "tipo=?", // where
+                new String[]{tipo}, // where args
+                null // order by
+        );
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        adapter.swapCursor(null);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getActivity(), "Carro: " + id, Toast.LENGTH_SHORT).show();
+        Cursor cursor = getActivity().getContentResolver().query(CARROS_URI, null, "_id=?", new String[]{String.valueOf(id)}, null);
+        Carro carro = CarroService.getCarro(cursor);
+        Toast.makeText(getActivity(), "Carro: " + carro.nome, Toast.LENGTH_SHORT).show();
+    }
+}
