@@ -1,4 +1,4 @@
-package br.com.livroandroid.asynctask;
+package br.com.livroandroid.provider;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

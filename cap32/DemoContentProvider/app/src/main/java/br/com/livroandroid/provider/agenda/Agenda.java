@@ -1,4 +1,4 @@
-package br.com.livroandroid.contatos.agenda;
+package br.com.livroandroid.provider.agenda;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -25,22 +25,26 @@ import android.provider.ContactsContract.Contacts;
 public class Agenda {
 	// content://com.android.contacts/contacts
 	private static final Uri URI = Contacts.CONTENT_URI;
+    private Context context;
+
+    public Agenda(Context context) {
+        this.context = context;
+    }
 	
-	public List<Contato> getContatos(Context context) {
+	public List<Contato> getContatos() {
 
 		// Recupera o Cursor para percorrer a lista de contatos
-		Cursor c = context.getContentResolver().query(URI, null, null, null,
-				null);
+		Cursor c = context.getContentResolver().query(URI, null, "has_phone_number=1", null,null);
 
-		return getContatos(context, c);
+		return getContatos(c);
 	}
 
-    public List<Contato> getContatos(Context context, Cursor cursor) {
+    public List<Contato> getContatos(Cursor cursor) {
         List<Contato> contatos = new ArrayList<Contato>();
 
         try {
             while (cursor.moveToNext()) {
-                Contato a = getContato(context, cursor);
+                Contato a = getContato(cursor);
                 contatos.add(a);
             }
         } finally {
@@ -51,7 +55,17 @@ public class Agenda {
         return contatos;
     }
 
-	public Contato getContato(Context context, Cursor cursor) {
+    public Contato getContatoById(Long id) {
+        Uri uri = ContentUris.withAppendedId(Contacts.CONTENT_URI, id);
+        Cursor cursor = context.getContentResolver().query(uri, null, "has_phone_number=1", null,null);
+        if(cursor.moveToNext()) {
+            Contato c = getContato(cursor);
+            return c;
+        }
+        return null;
+    }
+
+	public Contato getContato(Cursor cursor) {
 		Contato c = new Contato();
 
 		// Id e nome
@@ -64,19 +78,14 @@ public class Agenda {
 		// Fone
 		boolean temFone = "1".equals(cursor.getString(cursor.getColumnIndexOrThrow(Contacts.HAS_PHONE_NUMBER)));
 		if (temFone) {
-			List<String> fones = getFones(context, id);
+			List<String> fones = getFones(id);
 			c.fones = fones;
 		}
-		
-		// Foto
-		Bitmap b = getFoto(context, id);
-		c.foto = b;
-
 		return c;
 	}
 
 	// Busca os telefones na tabela 'ContactsContract.CommonDataKinds.Phone'
-	private List<String> getFones(Context context, long id) {
+	private List<String> getFones(long id) {
 		List<String> fones = new ArrayList<String>();
 	
 		Cursor cursor = context.getContentResolver().query(
@@ -95,18 +104,5 @@ public class Agenda {
 		}
 		
 		return fones;
-	}
-
-	// Le a foto de um contato
-	private Bitmap getFoto(Context context, long id) {
-		// Cria a Uri para o id fornecido
-		Uri uri = ContentUris.withAppendedId(Contacts.CONTENT_URI, id);
-		ContentResolver contentResolver = context.getContentResolver();
-		InputStream in = Contacts.openContactPhotoInputStream(contentResolver, uri);
-		if (in != null) {
-			Bitmap foto = BitmapFactory.decodeStream(in);
-			return foto;
-		}
-		return null;
 	}
 }
