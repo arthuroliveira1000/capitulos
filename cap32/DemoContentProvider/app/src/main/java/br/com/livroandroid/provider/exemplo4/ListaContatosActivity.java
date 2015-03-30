@@ -9,7 +9,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import br.com.livroandroid.provider.R;
 import br.com.livroandroid.provider.agenda.Agenda;
 import br.com.livroandroid.provider.agenda.Contato;
+import br.com.livroandroid.provider.adapter.ContatoCursorAdapter;
 
 /**
  * Mostra como utilizar o CursorLoader da API de Loaders
@@ -27,6 +27,7 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
 
     private static final String TAG = "livroandroid";
     private ListView listView;
+    private CursorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,44 +37,39 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         listView = (ListView) findViewById(R.id.listView);
         listView.setOnItemClickListener(this);
 
-        // Imprime os contatos
-        Uri contatos = ContactsContract.Contacts.CONTENT_URI;
-        Cursor cursor = getContentResolver().query(contatos, null, "has_phone_number=1", null, null);
+        // Configura o ListView com um adapter
+        adapter = new ContatoCursorAdapter(this,null);
+        listView.setAdapter(adapter);
 
+        // Inicia o loader
         getSupportLoaderManager().initLoader(1, null, this);
-
-        /*CursorAdapter adapter = new SimpleCursorAdapter(
-                this,
-                R.layout.adapter_contato,
-                cursor,
-                new String[]{ContactsContract.Contacts.DISPLAY_NAME},
-                new int[]{R.id.tNome},
-                0);
-        listView.setAdapter(adapter);*/
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Agenda a = new Agenda(this);
         Contato c = a.getContatoById(id);
-        Toast.makeText(this,"Ex4: " + c.nome, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Ex4: " + c.nome, Toast.LENGTH_SHORT).show();
+        c.show(this);
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        // Retorna o CursorLoader para carregar os contatos
         Uri contatos = ContactsContract.Contacts.CONTENT_URI;
         return new CursorLoader(getApplicationContext(),contatos,
-                null,"has_phone_number=1",null,null);
+                null,ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ",null, ContactsContract.Contacts.DISPLAY_NAME);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        Toast.makeText(this,"F: " + data.getCount(), Toast.LENGTH_SHORT).show();
-        listView.setAdapter(adapter);
+        // Carrega o adapter com o cursor
+        adapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        // Limpa o adapter
+        adapter.swapCursor(null);
     }
 }

@@ -1,6 +1,7 @@
-package br.com.livroandroid.provider.agenda;
+package br.com.livroandroid.provider.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import br.com.livroandroid.provider.R;
 import br.com.livroandroid.provider.agenda.Contato;
 
 /**
@@ -43,7 +45,8 @@ public class ContatoAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        Contato c = contatos.get(position);
+        return c.id;
     }
 
     @Override
@@ -55,10 +58,11 @@ public class ContatoAdapter extends BaseAdapter {
 
         Contato c = contatos.get(position);
 
+        Uri uriContato = c.getUri();
         tNome.setText(c.nome);
-        img.assignContactUri(c.getUri());
 
-        Log.d("livroandroid",c.nome + " >> " +c.getUri());
+        img.assignContactUri(uriContato);
+        Picasso.with(context).load(uriContato).into(img);
 
         return view;
     }

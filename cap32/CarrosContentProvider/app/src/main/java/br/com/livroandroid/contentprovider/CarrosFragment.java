@@ -39,18 +39,14 @@ public class CarrosFragment extends Fragment implements AdapterView.OnItemClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_carros, container, false);
 
+        // Configura o ListView
         ListView listView = (ListView) view.findViewById(R.id.listView);
-
-        /*adapter = new SimpleCursorAdapter(getActivity(),
-                R.layout.adapter_carro, null,
-                new String[]{"nome"},
-                new int[]{R.id.tNome}, 0);*/
-
         adapter = new CarroAdapter(getActivity());
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
 
+        // Inicia o loader
         getLoaderManager().initLoader(0, null, this);
 
         return view;
@@ -70,11 +66,13 @@ public class CarrosFragment extends Fragment implements AdapterView.OnItemClickL
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        // Carrega o adapter com os dados do Cursor
         adapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        // Limpa o adapter
         adapter.swapCursor(null);
     }
 

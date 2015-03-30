@@ -32,8 +32,9 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
 
         // Imprime os contatos
         Uri contatos = ContactsContract.Contacts.CONTENT_URI;
-        Cursor cursor = getContentResolver().query(contatos, null, "has_phone_number=1", null, null);
+        Cursor cursor = getContentResolver().query(contatos, null, ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ", null, ContactsContract.Contacts.DISPLAY_NAME);
 
+        // Não temos como jogar a foto aqui
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(
                 getBaseContext(),
                 R.layout.adapter_contato,
@@ -50,5 +51,6 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         Agenda a = new Agenda(this);
         Contato c = a.getContatoById(id);
         Toast.makeText(this, "Ex2: " + c.nome, Toast.LENGTH_SHORT).show();
+        c.show(this);
     }
 }

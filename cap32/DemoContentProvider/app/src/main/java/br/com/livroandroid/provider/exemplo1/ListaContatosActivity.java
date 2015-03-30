@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import br.com.livroandroid.provider.adapter.ContatoAdapter;
 import br.com.livroandroid.provider.agenda.Agenda;
 import br.com.livroandroid.provider.agenda.Contato;
-import br.com.livroandroid.provider.agenda.ContatoAdapter;
 
 /**
  * Utiliza a classe Agenda para buscar no content provider.
@@ -32,25 +32,10 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         final ListView listView = (ListView) findViewById(br.com.livroandroid.provider.R.id.listView);
         listView.setOnItemClickListener(this);
 
+        // Lista os contatos
         final Agenda a = new Agenda(this);
-
-        new Thread(){
-            @Override
-            public void run() {
-                // Imprime os contatos
-                final List<Contato> contatos = a.getContatos();
-                for (Contato c: contatos) {
-                    Log.d(TAG,"Nome: " + c.nome + ", fone: " + c.fones);
-                }
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        listView.setAdapter(new ContatoAdapter(getBaseContext(),contatos));
-                    }
-                });
-            }
-        }.start();
+        final List<Contato> contatos = a.getContatos();
+        listView.setAdapter(new ContatoAdapter(getBaseContext(), contatos));
 
         //printContatos();
     }
@@ -58,7 +43,7 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
     private void printContatos() {
         // Uri: "content://com.android.contacts/contacts"
         Uri contatos = ContactsContract.Contacts.CONTENT_URI;
-        Cursor cursor = getContentResolver().query(contatos, null, null, null, null);
+        Cursor cursor = getContentResolver().query(contatos, null, ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ", null, null);
         int count = cursor.getCount();
         Log.i(TAG,"Foram encontrados "+count+" contatos.");
         while(cursor.moveToNext()){
@@ -74,6 +59,6 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         Agenda a = new Agenda(this);
         Contato c = a.getContatoById(id);
         Toast.makeText(this,"Ex1: " + c.nome, Toast.LENGTH_SHORT).show();
-
+        c.show(this);
     }
 }

@@ -4,7 +4,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import br.com.livroandroid.provider.R;
+import br.com.livroandroid.provider.adapter.ContatoCursorAdapter;
 import br.com.livroandroid.provider.agenda.Agenda;
 import br.com.livroandroid.provider.agenda.Contato;
 
@@ -32,17 +32,10 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
 
         // Imprime os contatos
         Uri contatos = ContactsContract.Contacts.CONTENT_URI;
-        Cursor cursor = getContentResolver().query(contatos, null, "has_phone_number=1", null, null);
+        Cursor cursor = getContentResolver().query(contatos, null, ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ", null, ContactsContract.Contacts.DISPLAY_NAME);
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
-                getBaseContext(),
-                R.layout.adapter_contato,
-                cursor,
-                new String[]{ContactsContract.Contacts.DISPLAY_NAME},
-                new int[]{R.id.tNome},
-                0);
-
-        listView.setAdapter(adapter);
+        // CursorAdapter customizado
+        listView.setAdapter(new ContatoCursorAdapter(this,cursor));
     }
 
     @Override
@@ -50,5 +43,6 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         Agenda a = new Agenda(this);
         Contato c = a.getContatoById(id);
         Toast.makeText(this, "Ex3: " + c.nome, Toast.LENGTH_SHORT).show();
+        c.show(this);
     }
 }

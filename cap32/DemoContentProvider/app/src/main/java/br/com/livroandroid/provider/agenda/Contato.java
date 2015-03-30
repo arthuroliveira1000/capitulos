@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -41,5 +42,10 @@ public class Contato {
             return foto;
         }
         return null;
+    }
+
+    public void show(Context context) {
+        Uri uriContato = getUri();
+        context.startActivity(new Intent(Intent.ACTION_VIEW,uriContato));
     }
 }
