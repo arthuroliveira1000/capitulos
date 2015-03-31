@@ -19,9 +19,6 @@ import br.com.livroandroid.contatos.agenda.Contato;
  * Mostra como utilizar o SimpleCursorAdapter diretamente
  */
 public class ListaContatosActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
-
-    private static final String TAG = "livroandroid";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +27,7 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         final ListView listView = (ListView) findViewById(R.id.listView);
         listView.setOnItemClickListener(this);
 
-        // Imprime os contatos
+        // Lista os contatos
         Uri contatos = ContactsContract.Contacts.CONTENT_URI;
         Cursor cursor = getContentResolver().query(contatos, null, ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ", null, ContactsContract.Contacts.DISPLAY_NAME);
 

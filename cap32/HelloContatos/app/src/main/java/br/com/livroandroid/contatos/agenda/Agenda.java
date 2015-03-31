@@ -114,17 +114,15 @@ public class Agenda {
             ArrayList<ContentProviderOperation> operation =
                     new ArrayList<ContentProviderOperation>();
 
-            // Armazenará o id interno do contato
-            // e servirá para inserir os detalhes
             int backRefIndex = 0;
 
-            // Associa o contato à conta-padrão do telefone
+            // Adiciona o contato
             operation.add(
                     ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI).
                             withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null).
                             withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null).build());
 
-            // Adiciona o nome do contato e alimenta id
+            // Nome do contato
             operation.add(
                     ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI).
                             withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, backRefIndex).

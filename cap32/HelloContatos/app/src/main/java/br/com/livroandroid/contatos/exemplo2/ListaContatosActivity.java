@@ -30,7 +30,7 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         final ListView listView = (ListView) findViewById(br.com.livroandroid.contatos.R.id.listView);
         listView.setOnItemClickListener(this);
 
-        // Imprime os contatos
+        // Lista os contatos
         Uri contatos = ContactsContract.Contacts.CONTENT_URI;
         Cursor cursor = getContentResolver().query(contatos, null, ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ", null, ContactsContract.Contacts.DISPLAY_NAME);
 
@@ -42,8 +42,9 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
                 new String[]{ContactsContract.Contacts.DISPLAY_NAME},
                 new int[]{R.id.tNome},
                 0);
-
         listView.setAdapter(adapter);
+
+        Toast.makeText(this, "Com o SimpleCursorAdapter diretamente não conseguimos mostrar a foto.", Toast.LENGTH_SHORT).show();
     }
 
     @Override

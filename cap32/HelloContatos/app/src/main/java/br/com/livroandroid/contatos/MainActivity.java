@@ -1,4 +1,4 @@
-package br.com.livroandroid.contatos.exemplo1;
+package br.com.livroandroid.contatos;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import br.com.livroandroid.contatos.R;
 import br.com.livroandroid.contatos.agenda.Agenda;
+import br.com.livroandroid.contatos.exemplo1.ListaContatosActivity;
 
 /**
  * Exemplos de Layouts
@@ -65,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         try {
             switch (position) {
                 case 0:
-                    startActivity(new Intent(getBaseContext(), br.com.livroandroid.contatos.exemplo1.ListaContatosActivity.class));
+                    startActivity(new Intent(getBaseContext(), ListaContatosActivity.class));
                     break;
                 case 1:
                     startActivity(new Intent(getBaseContext(), br.com.livroandroid.contatos.exemplo2.ListaContatosActivity.class));
