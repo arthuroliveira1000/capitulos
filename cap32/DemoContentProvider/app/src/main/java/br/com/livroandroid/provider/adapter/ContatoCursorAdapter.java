@@ -30,8 +30,6 @@ public class ContatoCursorAdapter extends CursorAdapter {
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         index = new int[] {
                 cursor.getColumnIndex(ContactsContract.Contacts._ID),
-                cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY),
-                cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
         };
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_contato, parent,false);
         return view;

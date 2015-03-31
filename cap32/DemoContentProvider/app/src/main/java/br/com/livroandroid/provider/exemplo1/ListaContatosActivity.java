@@ -35,7 +35,19 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         // Lista os contatos
         final Agenda a = new Agenda(this);
         final List<Contato> contatos = a.getContatos();
-        listView.setAdapter(new ContatoAdapter(getBaseContext(), contatos));
+        final ContatoAdapter adapter = new ContatoAdapter(getBaseContext(), contatos);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Agenda a = new Agenda(getBaseContext());
+                a.delete(id);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(getBaseContext(), "Contato excluído com sucesso.", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
         //printContatos();
     }

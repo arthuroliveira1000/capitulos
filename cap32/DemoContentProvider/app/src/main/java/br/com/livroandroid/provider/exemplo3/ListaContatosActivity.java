@@ -35,7 +35,8 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         Cursor cursor = getContentResolver().query(contatos, null, ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ", null, ContactsContract.Contacts.DISPLAY_NAME);
 
         // CursorAdapter customizado
-        listView.setAdapter(new ContatoCursorAdapter(this,cursor));
+        final ContatoCursorAdapter adapter = new ContatoCursorAdapter(this,cursor);
+        listView.setAdapter(adapter);
     }
 
     @Override

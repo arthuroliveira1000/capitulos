@@ -48,4 +48,21 @@ public class Contato {
         Uri uriContato = getUri();
         context.startActivity(new Intent(Intent.ACTION_VIEW,uriContato));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Contato contato = (Contato) o;
+
+        if (id != contato.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
+    }
 }
