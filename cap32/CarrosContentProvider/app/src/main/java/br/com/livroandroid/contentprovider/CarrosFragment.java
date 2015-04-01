@@ -78,10 +78,11 @@ public class CarrosFragment extends Fragment implements AdapterView.OnItemClickL
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getActivity(), "Carro: " + id, Toast.LENGTH_SHORT).show();
         Cursor cursor = getActivity().getContentResolver().query(CARROS_URI, null, "_id=?", new String[]{String.valueOf(id)}, null);
         Carro carro = CarroService.getCarro(cursor);
-        Toast.makeText(getActivity(), "Carro: " + carro.nome, Toast.LENGTH_SHORT).show();
+        if(carro != null) {
+            Toast.makeText(getActivity(), "Carro: " + carro.nome, Toast.LENGTH_SHORT).show();
+        }
         // TODO Continue o desenvolvimento aqui...
     }
 }
