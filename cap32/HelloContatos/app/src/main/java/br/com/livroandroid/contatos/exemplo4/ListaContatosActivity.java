@@ -56,15 +56,15 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // Retorna o CursorLoader para carregar os contatos
-        Uri contatos = ContactsContract.Contacts.CONTENT_URI;
-        return new CursorLoader(getApplicationContext(),contatos,
+        Uri uriContatos = ContactsContract.Contacts.CONTENT_URI;
+        return new CursorLoader(getApplicationContext(),uriContatos,
                 null,ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ",null, ContactsContract.Contacts.DISPLAY_NAME);
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         // Carrega o adapter com o cursor
-        adapter.swapCursor(data);
+        adapter.swapCursor(cursor);
     }
 
     @Override

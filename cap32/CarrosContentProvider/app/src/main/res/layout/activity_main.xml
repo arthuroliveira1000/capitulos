@@ -3,6 +3,11 @@
     android:layout_height="match_parent"
     >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Este projeto demonstra como ler os carros do provedor de conteúdo.\n\nLembre-se que o app dos carros precisa estar instalado, pois é ele que fornece o conteúdo."/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"

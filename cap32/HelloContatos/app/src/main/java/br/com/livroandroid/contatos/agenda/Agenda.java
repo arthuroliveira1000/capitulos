@@ -35,9 +35,13 @@ public class Agenda {
     public List<Contato> getContatos() {
 
         // Recupera o Cursor para percorrer a lista de contatos
-        Cursor c = context.getContentResolver().query(URI, null, ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1 ", null, Contacts.DISPLAY_NAME);
+        Cursor c = getCursorContatos();
 
         return getContatos(c);
+    }
+
+    public Cursor getCursorContatos() {
+        return context.getContentResolver().query(URI, null, ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1 ", null, Contacts.DISPLAY_NAME);
     }
 
     public List<Contato> getContatos(Cursor cursor) {

@@ -27,9 +27,9 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         listView.setOnItemClickListener(this);
 
         // Lista os contatos
-        final Agenda a = new Agenda(this);
-        final List<Contato> contatos = a.getContatos();
-        final ContatoAdapter adapter = new ContatoAdapter(getBaseContext(), contatos);
+        Agenda a = new Agenda(this);
+        List<Contato> contatos = a.getContatos();
+        ContatoAdapter adapter = new ContatoAdapter(getBaseContext(), contatos);
         listView.setAdapter(adapter);
     }
 

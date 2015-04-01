@@ -18,28 +18,21 @@ import br.com.livroandroid.contatos.agenda.Agenda;
 import br.com.livroandroid.contatos.agenda.Contato;
 
 public class ContatoCursorAdapter extends CursorAdapter {
-
-    int[] index;
-
     public ContatoCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
     }
-
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        index = new int[] {
-                cursor.getColumnIndex(ContactsContract.Contacts._ID),
-        };
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_contato, parent,false);
         return view;
     }
-
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         TextView tNome = (TextView) view.findViewById(R.id.tNome);
         QuickContactBadge img = (QuickContactBadge) view.findViewById(R.id.img);
 
-        Long id = mCursor.getLong(index[0]);
+        int idxId = cursor.getColumnIndex(ContactsContract.Contacts._ID);
+        Long id = cursor.getLong(idxId);
         Contato c = new Agenda(context).getContatoById(id);
 
         Uri uriContato = c.getUri();

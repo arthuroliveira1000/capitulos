@@ -28,10 +28,8 @@ public class ListaContatosActivity extends ActionBarActivity implements AdapterV
         listView.setOnItemClickListener(this);
 
         // Lista os contatos
-        Uri contatos = ContactsContract.Contacts.CONTENT_URI;
-        Cursor cursor = getContentResolver().query(contatos, null, ContactsContract.Contacts.HAS_PHONE_NUMBER +" = 1 ", null, ContactsContract.Contacts.DISPLAY_NAME);
-
-        // CursorAdapter customizado
+        Agenda a = new Agenda(this);
+        Cursor cursor = a.getCursorContatos();
         final ContatoCursorAdapter adapter = new ContatoCursorAdapter(this,cursor);
         listView.setAdapter(adapter);
     }
