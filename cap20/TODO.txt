@@ -1,2 +1,3 @@
 https://github.com/livroandroid/Cap20-Intents
 https://github.com/livroandroid/Cap20-Intents-Carros
+https://github.com/livroandroid/HelloBarCodeReader
