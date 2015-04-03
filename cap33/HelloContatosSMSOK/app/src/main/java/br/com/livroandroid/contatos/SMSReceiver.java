@@ -23,9 +23,8 @@ public class SMSReceiver extends BroadcastReceiver {
         SmsMessage msg = sms.read(intent);
         String celular = msg.getDisplayOriginatingAddress();
         String mensagem = msg.getDisplayMessageBody();
-        String texto = "ReceberSms: recebeu sms[" + celular + "] -> " + mensagem;
-        Log.d(TAG, texto);
-        NotificationUtil.create(context,1,new Intent(context,MainActivity.class),R.mipmap.ic_launcher,"Novo SMS de: " + celular,texto);
+        Log.d(TAG, "SMSReceiver: sms[" + celular + "] -> " + mensagem);
+        NotificationUtil.create(context,1,new Intent(context,MainActivity.class),R.mipmap.ic_launcher,celular,mensagem);
 
     }
 }
