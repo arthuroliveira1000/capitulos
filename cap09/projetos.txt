@@ -1,0 +1,3 @@
+https://github.com/livroandroid/Cap09-ActivityAnimation
+https://github.com/livroandroid/Cap09-ViewAnimation
+https://github.com/livroandroid/Cap09-PropertyAnimation
