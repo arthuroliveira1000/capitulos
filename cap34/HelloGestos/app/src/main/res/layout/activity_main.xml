@@ -4,15 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
-    <TextView
-        android:id="@+id/text"
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-    <android.gesture.GestureOverlayView
-        android:id="@+id/gestureView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gestureColor="#00ff00" />
+        android:layout_height="match_parent"
+         />
+
 </LinearLayout>
