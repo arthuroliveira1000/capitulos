@@ -49,30 +49,24 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                     startActivity(new Intent(this, ListaSensoresActivity.class));
                     break;
                 case 1:
-                    startActivity(new Intent(this, TemperaturaActivity.class));
-                    break;
-                case 2:
                     startActivity(new Intent(this, LuminosidadeActivity.class));
                     break;
-                case 3:
+                case 2:
                     startActivity(new Intent(this, PressaoActivity.class));
                     break;
-                case 4:
-                    startActivity(new Intent(this, OrientacaoActivity.class));
-                    break;
-                case 5:
+                case 3:
                     startActivity(new Intent(this, ProximidadeActivity.class));
                     break;
-                case 6:
+                case 4:
                     startActivity(new Intent(this, ShakeActivity.class));
                     break;
-                case 7:
+                case 5:
                     startActivity(new Intent(this, AcelerometroActivity.class));
                     break;
-                case 8:
+                case 6:
                     startActivity(new Intent(this, GiroscopioActivity.class));
                     break;
-                case 9:
+                case 7:
                     startActivity(new Intent(this, GoogleFitPedometroActivity.class));
                     break;
                 default:

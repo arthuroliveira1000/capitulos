@@ -38,14 +38,6 @@
                 android:value="br.com.livroandroid.sensores.MainActivity" />
         </activity>
         <activity
-            android:name=".TemperaturaActivity"
-            android:label="@string/activity_title_temeratura"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.livroandroid.sensores.MainActivity" />
-        </activity>
-        <activity
             android:name=".LuminosidadeActivity"
             android:label="@string/activity_title_luminosidade"
             android:parentActivityName=".MainActivity" >
