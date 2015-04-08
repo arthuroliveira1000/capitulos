@@ -1,18 +1,16 @@
 package br.com.livroandroid.sensores;
 
-import android.graphics.Color;
-import android.location.Location;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.Scopes;
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.fitness.Fitness;
@@ -22,21 +20,17 @@ import com.google.android.gms.fitness.data.Field;
 import com.google.android.gms.fitness.data.Value;
 import com.google.android.gms.fitness.request.OnDataPointListener;
 import com.google.android.gms.fitness.request.SensorRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.CircleOptions;
-import com.google.android.gms.maps.model.LatLng;
-
-import org.w3c.dom.Text;
 
 import java.util.concurrent.TimeUnit;
 
 
 public class GoogleFitPedometroActivity extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    private static final String TAG = "livroandroid";
     private GoogleApiClient mGoogleApiClient;
     private TextView text;
     private int qtdePassos;
+    private boolean authInProgress = false;
+    private static final int REQUEST_OAUTH = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +44,10 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
         // Configura o objeto GoogleApiClient
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Fitness.SENSORS_API)
-                .useDefaultAccount()
-                .addScope(new Scope(Scopes.FITNESS_ACTIVITY_READ))
+                .addScope(Fitness.SCOPE_ACTIVITY_READ)
+                .addScope(Fitness.SCOPE_ACTIVITY_READ_WRITE)
+                .addScope(Fitness.SCOPE_LOCATION_READ)
+                .addScope(Fitness.SCOPE_LOCATION_READ_WRITE)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
@@ -110,11 +106,44 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        toast("Erro ao conectar: " + connectionResult);
+    public void onConnectionFailed(ConnectionResult result) {
+        toast("Erro ao conectar: " + result);
+        Log.d(TAG, "Connection failed. Cause: " + result.toString());
+        if (!result.hasResolution()) {
+            // Show the localized error dialog
+            GooglePlayServicesUtil.getErrorDialog(result.getErrorCode(),this, 0).show();
+            return;
+        }
+        // The failure has a resolution. Resolve it.
+        // Called typically when the app is not yet authorized, and an
+        // authorization dialog is displayed to the user.
+        if (!authInProgress) {
+            try {
+                Log.d(TAG, "Attempting to resolve failed connection");
+                authInProgress = true;
+                result.startResolutionForResult(this,REQUEST_OAUTH);
+            } catch (IntentSender.SendIntentException e) {
+                Log.e(TAG,
+                        "Exception while starting resolution activity", e);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_OAUTH) {
+            authInProgress = false;
+            if (resultCode == RESULT_OK) {
+                // Make sure the app is not already connected or attempting to connect
+                if (!mGoogleApiClient.isConnecting() && !mGoogleApiClient.isConnected()) {
+                    mGoogleApiClient.connect();
+                }
+            }
+        }
     }
 
     private void toast(String s) {
+        Log.d("livroandroid","> " + s);
         Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
     }
 }

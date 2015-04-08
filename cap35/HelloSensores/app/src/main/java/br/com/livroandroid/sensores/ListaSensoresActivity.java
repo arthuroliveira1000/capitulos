@@ -1,5 +1,6 @@
 package br.com.livroandroid.sensores;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -22,20 +23,16 @@ import java.util.List;
  *
  * @author rlecheta
  */
-public class ListaSensoresActivity extends ActionBarActivity implements SensorEventListener, AdapterView.OnItemSelectedListener {
+public class ListaSensoresActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     private SensorManager sensorManager;
     private List<Sensor> sensorList;
-    private TextView text;
-    private Sensor sensor;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         setContentView(R.layout.activity_lista_sensores);
-
-        text = (TextView) findViewById(R.id.text);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -47,50 +44,23 @@ public class ListaSensoresActivity extends ActionBarActivity implements SensorEv
             nomes.add(s.getName() + " - " + s.getVendor() + " - " + s.getType());
         }
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(this);
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setOnItemClickListener(this);
 
         int layout = android.R.layout.simple_list_item_1;
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, layout, nomes);
-        spinner.setAdapter(adaptador);
+        listView.setAdapter(adaptador);
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        sensor = sensorList.get(position);
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Sensor sensor = sensorList.get(position);
         String msg = sensor.getName() + " - " + sensor.getVendor();
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        // Cancela o sensor atual
-        sensorManager.unregisterListener(this);
-        // Registra o sensor selecionado
-        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        // Vai para tela que vai ligar este sensor
+        Intent intent = new Intent(this,TestSensorActivity.class);
+        intent.putExtra("position",position);
+        startActivity(intent);
     }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        sensorManager.unregisterListener(this);
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // Mudou o status de precisão do cursor
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        // Lê os valores do sensor
-        StringBuffer sb = new StringBuffer("Sensor: ").append(sensor.getName()).append("\n");
-        for (int i = 0; i < event.values.length; i++) {
-            sb.append(i).append(": ").append(event.values[i]).append("\n");
-        }
-        text.setText(sb.toString());
-    }
-
-
 }

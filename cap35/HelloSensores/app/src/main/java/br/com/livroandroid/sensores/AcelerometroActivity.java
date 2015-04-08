@@ -22,8 +22,9 @@ public class AcelerometroActivity extends ActionBarActivity implements SensorEve
 	private SensorManager sensorManager;
 	private Sensor sensor;
 	private Display display;
+    private long time;
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sensor_acelerometro);
@@ -35,7 +36,7 @@ public class AcelerometroActivity extends ActionBarActivity implements SensorEve
 		if (sensorManager.getDefaultSensor(TIPO_SENSOR) != null) {
 			sensor = sensorManager.getDefaultSensor(TIPO_SENSOR);
 		} else {
-			Toast.makeText(this, "Sensor de Aceler�metro não disponível.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Sensor de Acelerômetro não disponível.", Toast.LENGTH_SHORT).show();
 		}
 
 
@@ -63,47 +64,27 @@ public class AcelerometroActivity extends ActionBarActivity implements SensorEve
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// Mudou o status de precisão do cursor
+		// Mudou o status de precisão do sensor
 //		SENSOR_STATUS_ACCURACY_LOW, SENSOR_STATUS_ACCURACY_MEDIUM, SENSOR_STATUS_ACCURACY_HIGH, or SENSOR_STATUS_UNRELIABLE.
 	}
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		float sensorX = 0;
-		float sensorY = 0;
-		float sensorZ = 0;
-		String debugText = "";
-
-		switch (display.getRotation()) {
-		case Surface.ROTATION_0:
-			sensorX = -event.values[0];
-			sensorY = event.values[1];
-			sensorZ = event.values[2];
-			debugText = "Rotação 0º";
-			break;
-		case Surface.ROTATION_90:
-			sensorX = event.values[1];
-			sensorY = event.values[0];
-			sensorZ = event.values[2];
-			debugText = "Rotação 90º";
-			break;
-		case Surface.ROTATION_180:
-			sensorX = event.values[0];
-			sensorY = -event.values[1];
-			sensorZ = event.values[2];
-			debugText = "Rotação 180º";
-			break;
-		case Surface.ROTATION_270:
-			sensorX = -event.values[1];
-			sensorY = -event.values[0];
-			sensorZ = event.values[2];
-			debugText = "Rotação 270º";
-			break;
-		}
-
-		((TextView) findViewById(R.id.tX)).setText("X: " + sensorX);
-		((TextView) findViewById(R.id.tY)).setText("Y: " + sensorY);
-		((TextView) findViewById(R.id.tZ)).setText("Z: " + sensorZ);
-		((TextView) findViewById(R.id.tMsg)).setText(debugText);
-	}
+        long now = System.currentTimeMillis();
+        if(now - time  > 1000) {
+            time = now;
+            float values[] = SensorUtil.fixAcelerometro(this, event);
+            float sensorX = values[0];
+            float sensorY = values[1];
+            float sensorZ = values[2];
+            TextView tx = (TextView) findViewById(R.id.tX);
+            TextView tY = (TextView) findViewById(R.id.tY);
+            TextView tZ = (TextView) findViewById(R.id.tZ);
+            TextView tMsg = (TextView) findViewById(R.id.tMsg);
+            tx.setText("X: " + sensorX);
+            tY.setText("Y: " + sensorY);
+            tZ.setText("Z: " + sensorZ);
+            tMsg.setText("Rotação: " + SensorUtil.getRotationString(this));
+        }
+    }
 }

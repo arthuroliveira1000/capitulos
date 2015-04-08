@@ -25,5 +25,7 @@
     <string name="title_activity_google_fit_pedometro">Pedometro</string>
     <string name="qtde_passos">Quantidade de Passos</string>
     <string name="valor_sensor">Valor do Sensor aqui</string>
+    <string name="title_activity_test_sensor">TestSensorActivity</string>
+    <string name="title_activity_jogo_acelerometro">JogoAcelerometroActivity</string>
 
 </resources>

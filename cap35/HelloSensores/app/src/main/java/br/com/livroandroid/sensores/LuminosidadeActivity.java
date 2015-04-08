@@ -1,13 +1,11 @@
 package br.com.livroandroid.sensores;
 
-import android.app.Activity;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +25,7 @@ public class LuminosidadeActivity extends ActionBarActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sensor_progressbar);
+		setContentView(R.layout.activity_sensor_seekbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -66,7 +64,7 @@ public class LuminosidadeActivity extends ActionBarActivity implements
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// Mudou o status de precisão do cursor
+		// Mudou o status de precisão do sensor
 	}
 
 	@Override

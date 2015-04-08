@@ -25,13 +25,12 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         String[] items = new String[] {
                 "Listar Sensores",
-                "Temperatura",
                 "Luminosidade",
                 "Pressao",
-                "Orientacao",
                 "Proximidade",
                 "Shake",
                 "Acelerômetro",
+                "Acelerômetro Jogo/Boneco",
                 "Giroscopio",
                 "Google Fit",
                 "Sair" };
@@ -64,9 +63,12 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                     startActivity(new Intent(this, AcelerometroActivity.class));
                     break;
                 case 6:
-                    startActivity(new Intent(this, GiroscopioActivity.class));
+                    startActivity(new Intent(this, AcelerometroJogoActivity.class));
                     break;
                 case 7:
+                    startActivity(new Intent(this, GiroscopioActivity.class));
+                    break;
+                case 8:
                     startActivity(new Intent(this, GoogleFitPedometroActivity.class));
                     break;
                 default:

@@ -63,7 +63,7 @@ public class GiroscopioActivity extends ActionBarActivity implements SensorEvent
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// Mudou o status de precisão do cursor
+		// Mudou o status de precisão do sensor
 //		SENSOR_STATUS_ACCURACY_LOW, SENSOR_STATUS_ACCURACY_MEDIUM, SENSOR_STATUS_ACCURACY_HIGH, or SENSOR_STATUS_UNRELIABLE.
 	}
 
