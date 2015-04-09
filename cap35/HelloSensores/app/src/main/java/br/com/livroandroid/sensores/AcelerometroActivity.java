@@ -81,10 +81,10 @@ public class AcelerometroActivity extends ActionBarActivity implements SensorEve
             TextView tY = (TextView) findViewById(R.id.tY);
             TextView tZ = (TextView) findViewById(R.id.tZ);
             TextView tMsg = (TextView) findViewById(R.id.tMsg);
-            tx.setText("X: " + sensorX);
-            tY.setText("Y: " + sensorY);
-            tZ.setText("Z: " + sensorZ);
-            tMsg.setText("Rotação: " + SensorUtil.getRotationString(this));
+            if(tx != null)  { tx.setText("X: " + sensorX); }
+            if(tY != null)  { tY.setText("Y: " + sensorY); }
+            if(tZ != null)  { tZ.setText("Z: " + sensorZ); }
+            if(tMsg != null)  { tMsg.setText("Rotação: " + SensorUtil.getRotationString(this)); }
         }
     }
 }

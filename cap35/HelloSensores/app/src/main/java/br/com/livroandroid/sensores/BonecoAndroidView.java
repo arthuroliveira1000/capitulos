@@ -29,7 +29,6 @@ public class BonecoAndroidView extends View {
 
     private void init(Context context) {
         // Configura o fundo cinza e cria a imagem
-        paint.setColor(Color.LTGRAY);
         drawable = context.getResources().getDrawable(R.drawable.android);
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
                 drawable.getIntrinsicHeight());
@@ -38,11 +37,21 @@ public class BonecoAndroidView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        paint.setColor(Color.LTGRAY);
         // Desenha o fundo da view (um quadrado cinza)
         canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
+        paint.setTextSize(toPixels(16));
+        paint.setColor(Color.BLACK);
+        canvas.drawText("x/y:" + dx + "/" + dy, 50, 50, paint);
         // Desenha a imagem das posições x e y
         canvas.translate(dx, dy);
         drawable.draw(canvas);
+    }
+
+    private float toPixels(int dp) {
+        final float scale = getResources().getDisplayMetrics().density;
+        float px = dp * scale + 0.5f;
+        return px;
     }
 
     public void setDx(int dx) {

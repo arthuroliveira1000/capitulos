@@ -20,6 +20,7 @@ public class AcelerometroJogoActivity extends AcelerometroActivity {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        super.onSensorChanged(event);
         // Lê os valores retornados pelo acelerômetro
         float values[] = SensorUtil.fixAcelerometro(this, event);
         float sensorX = values[0];
