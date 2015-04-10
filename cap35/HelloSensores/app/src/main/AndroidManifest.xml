@@ -95,7 +95,7 @@
                 android:value="br.com.livroandroid.sensores.MainActivity" />
         </activity>
         <activity
-            android:name=".GoogleFitPedometroActivity"
+            android:name=".GoogleFitPedometroActivity" android:screenOrientation="portrait"
             android:label="@string/title_activity_google_fit_pedometro"
             android:parentActivityName=".MainActivity" >
             <meta-data

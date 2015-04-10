@@ -87,7 +87,12 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
                         Value val = dataPoint.getValue(field);
                         Log.d("livroandroid","Valor Pedometro: " + val);
                         qtdePassos += val.asInt();
-                        text.setText("Passos: " + qtdePassos);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                text.setText("Passos: " + qtdePassos);
+                            }
+                        });
                     }
                 }
             }
