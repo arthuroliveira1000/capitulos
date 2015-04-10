@@ -12,7 +12,9 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.fitness.Fitness;
 import com.google.android.gms.fitness.data.DataPoint;
 import com.google.android.gms.fitness.data.DataType;
@@ -75,6 +77,7 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
     }
 
     private void startPedometer() {
+        Log.d("livroandroid","startPedometer");
         // Listener do Fitness API que conta os passos
         OnDataPointListener listener = new OnDataPointListener() {
             @Override
@@ -82,7 +85,7 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
                 for (Field field : dataPoint.getDataType().getFields()) {
                     if (dataPoint.getDataType().equals(DataType.TYPE_STEP_COUNT_DELTA)) {
                         Value val = dataPoint.getValue(field);
-                        Log.d("livro", "Valor Pedometro: " + val);
+                        Log.d("livroandroid","Valor Pedometro: " + val);
                         qtdePassos += val.asInt();
                         text.setText("Passos: " + qtdePassos);
                     }
@@ -97,7 +100,9 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
                 .build();
 
         // Ativa a API do Fitness
-        Fitness.SensorsApi.add(mGoogleApiClient, req, listener);
+        PendingResult<Status> result = Fitness.SensorsApi.add(mGoogleApiClient, req, listener);
+        Log.d("livroandroid","result: " + result);
+        Toast.makeText(getBaseContext(),"result: " + result.isCanceled(),Toast.LENGTH_SHORT).show();
     }
 
     @Override
