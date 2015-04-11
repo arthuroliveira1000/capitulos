@@ -24,14 +24,13 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         setContentView(R.layout.activity_main);
 
-        String[] items = new String[] {
+        String[] items = new String[]{
                 "Verificar e ativar Bluetooth",
-                "Devices pareados",
-                "Encontrar device pelo endereço",
+                "Lista de Devices pareados",
                 "Buscar devices",
                 "Ficar visível",
-                "Iniciar servidor - aguardar mensagem",
-                "Sair" };
+                "Iniciar servidor Chat",
+                "Sair"};
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items));
@@ -49,19 +48,14 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                     startActivity(new Intent(this, ListaPareadosActivity.class));
                     break;
                 case 2:
-                    startActivity(new Intent(this, BuscaPeloEnderecoActivity.class));
+                    startActivity(new Intent(this, ListaDevicesActivity.class));
                     break;
                 case 3:
-                    startActivity(new Intent(this, BuscarDevicesActivity.class));
+                    // Garante que alguém pode te encontrar
+                    BluetoothUtil.makeVisible(this,300);
                     break;
                 case 4:
-                    // Garante que alguém pode te encontrar
-                    Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                    discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-                    startActivity(discoverableIntent);
-                    break;
-                case 5:
-                    startActivity(new Intent(this, BluetoothServidorActivity.class));
+                    startActivity(new Intent(this, BluetoothChatServerActivity.class));
                     break;
                 default:
                     finish();

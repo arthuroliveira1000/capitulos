@@ -8,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import livroandroid.lib.utils.AndroidUtils;
+
 /**
  * Created by Usuário on 07/04/2015.
  */

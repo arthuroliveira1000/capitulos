@@ -28,11 +28,18 @@ import java.util.concurrent.TimeUnit;
 
 public class GoogleFitPedometroActivity extends ActionBarActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = "livroandroid";
+
     private GoogleApiClient mGoogleApiClient;
     private TextView text;
     private int qtdePassos;
-    private boolean authInProgress = false;
+
     private static final int REQUEST_OAUTH = 1;
+
+    /**
+     *  Controla se o dialog de autorização está aberto
+     */
+    private static final String AUTH_PENDING = "auth_state_pending";
+    private boolean authInProgress = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +50,15 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        if (savedInstanceState != null) {
+            authInProgress = savedInstanceState.getBoolean(AUTH_PENDING);
+        }
+
         // Configura o objeto GoogleApiClient
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Fitness.SENSORS_API)
-                .addScope(Fitness.SCOPE_ACTIVITY_READ)
-                .addScope(Fitness.SCOPE_ACTIVITY_READ_WRITE)
-                .addScope(Fitness.SCOPE_LOCATION_READ)
-                .addScope(Fitness.SCOPE_LOCATION_READ_WRITE)
+                .addScope(new Scope(Scopes.FITNESS_LOCATION_READ))
+                .addScope(new Scope(Scopes.FITNESS_ACTIVITY_READ))
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
@@ -59,14 +68,17 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
     protected void onStart() {
         super.onStart();
         // Conecta no Google Play Services
-        mGoogleApiClient.connect();
+        if(!mGoogleApiClient.isConnecting() && !mGoogleApiClient.isConnected()) {
+            toast("mGoogleApiClient.connect()");
+            mGoogleApiClient.connect();
+        }
     }
 
     @Override
-    protected void onStop() {
-        // Desconecta
+    protected void onDestroy() {
+        super.onDestroy();
+        // Desconecta ao sair
         mGoogleApiClient.disconnect();
-        super.onStop();
     }
 
     @Override
@@ -106,8 +118,7 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
 
         // Ativa a API do Fitness
         PendingResult<Status> result = Fitness.SensorsApi.add(mGoogleApiClient, req, listener);
-        Log.d("livroandroid","result: " + result);
-        Toast.makeText(getBaseContext(),"result: " + result.isCanceled(),Toast.LENGTH_SHORT).show();
+        toast("Pedômetro do Google Fit ativado: " + result);
     }
 
     @Override
@@ -117,21 +128,18 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
 
     @Override
     public void onConnectionFailed(ConnectionResult result) {
-        toast("Erro ao conectar: " + result);
-        Log.d(TAG, "Connection failed. Cause: " + result.toString());
         if (!result.hasResolution()) {
-            // Show the localized error dialog
+            // Se for algum erro de configuração ou serviço mostra alerta
             GooglePlayServicesUtil.getErrorDialog(result.getErrorCode(),this, 0).show();
             return;
         }
-        // The failure has a resolution. Resolve it.
-        // Called typically when the app is not yet authorized, and an
-        // authorization dialog is displayed to the user.
+        // Caso contrário pode ser porque o usuário não autorizou o acesso.
         if (!authInProgress) {
             try {
-                Log.d(TAG, "Attempting to resolve failed connection");
+                Log.i(TAG, "Attempting to resolve failed connection");
                 authInProgress = true;
-                result.startResolutionForResult(this,REQUEST_OAUTH);
+                result.startResolutionForResult(GoogleFitPedometroActivity.this,
+                        REQUEST_OAUTH);
             } catch (IntentSender.SendIntentException e) {
                 Log.e(TAG,
                         "Exception while starting resolution activity", e);
@@ -144,12 +152,18 @@ public class GoogleFitPedometroActivity extends ActionBarActivity implements Goo
         if (requestCode == REQUEST_OAUTH) {
             authInProgress = false;
             if (resultCode == RESULT_OK) {
-                // Make sure the app is not already connected or attempting to connect
+                // Depois que o usuário autorizou faz login no Google Play Services
                 if (!mGoogleApiClient.isConnecting() && !mGoogleApiClient.isConnected()) {
                     mGoogleApiClient.connect();
                 }
             }
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(AUTH_PENDING, authInProgress);
     }
 
     private void toast(String s) {

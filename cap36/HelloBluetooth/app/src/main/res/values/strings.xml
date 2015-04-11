@@ -10,7 +10,12 @@
     <string name="buscar">Buscar</string>
     <string name="nenhum_pareado"></string>
     <string name="conectar">Conectar</string>
-    <string name="enviar">Enviar</string>
+    <string name="enviar_msg">Enviar mensagem</string>
     <string name="aguardando_conex_o_">Aguardando conexão...</string>
+    <string name="chat_server">Chat Server</string>
+    <string name="chat_client">Chat Client</string>
+    <string name="lista_pareados">Lista Pareados</string>
+    <string name="lista_devices">Lista Devices</string>
+    <string name="bluetooth_check">Bluetooth Check</string>
 
 </resources>

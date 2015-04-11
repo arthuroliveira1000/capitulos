@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class BluetoothCheckActivity extends ActionBarActivity {
     protected static final String TAG = "livroandroid";
     protected BluetoothAdapter btfAdapter;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -37,6 +38,7 @@ public class BluetoothCheckActivity extends ActionBarActivity {
             startActivityForResult(enableIntent, 0);
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

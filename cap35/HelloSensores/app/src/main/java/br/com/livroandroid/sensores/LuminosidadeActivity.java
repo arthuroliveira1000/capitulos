@@ -6,6 +6,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,9 +39,10 @@ public class LuminosidadeActivity extends ActionBarActivity implements
 			
 			// Define o valor maximo no ProgressBar
 			float max = sensor.getMaximumRange();
-			progress.setMax(10000);
-			
-			Toast.makeText(this, "Sensor TYPE_LIGHT max " + max, Toast.LENGTH_SHORT).show();
+            Log.d("livroandroid","max: " + max);
+            progress.setMax((int)max);
+
+            Toast.makeText(this, "Sensor TYPE_LIGHT max " + max, Toast.LENGTH_SHORT).show();
 		} else {
 			Toast.makeText(this, "Sensor TYPE_LIGHT não disponível", Toast.LENGTH_SHORT).show();
 			

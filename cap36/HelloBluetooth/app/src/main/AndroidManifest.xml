@@ -22,12 +22,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="br.com.livroandroid.bluetooth.BluetoothCheckActivity" android:parentActivityName=".MainActivity" />
-        <activity android:name="br.com.livroandroid.bluetooth.ListaPareadosActivity" android:parentActivityName=".MainActivity" />
-        <activity android:name="br.com.livroandroid.bluetooth.BuscaPeloEnderecoActivity" android:parentActivityName=".MainActivity" />
-        <activity android:name="br.com.livroandroid.bluetooth.BuscarDevicesActivity" android:parentActivityName=".MainActivity" />
-        <activity android:name="br.com.livroandroid.bluetooth.BluetoothServidorActivity" android:parentActivityName=".MainActivity" />
-        <activity android:name="br.com.livroandroid.bluetooth.BluetoothClienteActivity" android:parentActivityName=".MainActivity" />
+        <activity android:name=".BluetoothCheckActivity" android:label="@string/bluetooth_check" android:parentActivityName=".MainActivity" />
+        <activity android:name=".ListaPareadosActivity" android:label="@string/lista_pareados" android:parentActivityName=".MainActivity" />
+        <activity android:name=".ListaDevicesActivity" android:label="@string/lista_devices" android:parentActivityName=".MainActivity" />
+        <activity android:name=".BluetoothChatServerActivity" android:label="@string/chat_server" android:parentActivityName=".MainActivity" />
+        <activity android:name=".BluetoothChatClientActivity" android:label="@string/chat_client" android:parentActivityName=".MainActivity" />
 
     </application>
 
