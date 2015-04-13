@@ -3,7 +3,7 @@
     package="br.com.livroandroid.voz" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +24,21 @@
             android:name=".HelloTTSActivity"
             android:label="@string/title_activity_hello_tts"
             android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.livroandroid.voz.MainActivity" />
+        </activity>
+        <activity
+            android:name=".HelloRecognizerIntentActivity"
+            android:label="@string/title_activity_hello_recognizer_intent"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.livroandroid.voz.MainActivity" />
+        </activity>
+        <activity
+            android:name=".HelloSpeechRecognizerActivity"
+            android:label="@string/title_activity_hello_speech_recognizer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.livroandroid.voz.MainActivity" />

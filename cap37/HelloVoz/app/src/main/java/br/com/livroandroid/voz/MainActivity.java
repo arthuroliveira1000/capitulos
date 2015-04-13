@@ -25,7 +25,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         String[] items = new String[]{
                 "Falar um texto",
-
+                "Recognizer Intent",
+                "Recognizer Listener",
                 "Sair"};
 
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -40,7 +41,12 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                 case 0:
                     startActivity(new Intent(this, HelloTTSActivity.class));
                     break;
-
+                case 1:
+                    startActivity(new Intent(this, HelloRecognizerIntentActivity.class));
+                    break;
+                case 2:
+                    startActivity(new Intent(this, HelloSpeechRecognizerActivity.class));
+                    break;
                 default:
                     finish();
                     break;

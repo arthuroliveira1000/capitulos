@@ -9,7 +9,7 @@
         android:id="@+id/tMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Olá bom dia, legal este exemplo né?" />
+        android:text="Olá, bom dia." />
 
     <Button
         android:onClick="onClickFalarTexto"
