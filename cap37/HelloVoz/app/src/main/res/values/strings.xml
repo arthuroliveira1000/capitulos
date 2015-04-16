@@ -10,6 +10,6 @@
     <string name="action_pt_br">Voz pt_BR</string>
     <string name="action_en_us">Voz en_US</string>
     <string name="title_activity_hello_recognizer_intent">Recognizer Intent</string>
-    <string name="title_activity_hello_speech_recognizer">HelloSpeechRecognizerActivity</string>
+    <string name="title_activity_hello_speech_recognizer">Recognizer Listener</string>
 
 </resources>
