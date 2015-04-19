@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 
+import br.com.livroandroid.helloviews.ex1.CardViewActivity;
+import br.com.livroandroid.helloviews.ex2.MyCardViewActivity;
 import br.com.livroandroid.shared.WearUtil;
 
 public class MainWearActivity extends Activity implements MessageApi.MessageListener {
@@ -50,6 +52,8 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
         Log.d(TAG, "onMessageReceived(): " + messageEvent.getPath() +" : " + msg);
         if("CardView".equals(msg)) {
             startActivity(new Intent(this,CardViewActivity.class));
+        } else if("CustomCardView".equals(msg)) {
+            startActivity(new Intent(this,MyCardViewActivity.class));
         }
     }
 }

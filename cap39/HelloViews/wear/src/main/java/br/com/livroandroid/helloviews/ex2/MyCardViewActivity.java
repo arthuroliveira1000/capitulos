@@ -1,14 +1,14 @@
-package br.com.livroandroid.helloviews;
+package br.com.livroandroid.helloviews.ex2;
 
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.wearable.view.CardFragment;
-import android.support.wearable.view.WatchViewStub;
 import android.widget.TextView;
 
-public class CardViewActivity extends Activity {
+import br.com.livroandroid.helloviews.R;
+
+public class MyCardViewActivity extends Activity {
 
     private TextView mTextView;
 
@@ -19,9 +19,11 @@ public class CardViewActivity extends Activity {
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        CardFragment cardFragment = CardFragment.create("Hello",
-                "Meu Primeiro CardView",
-                R.mipmap.ic_launcher);
+        MyCardFragment cardFragment = new MyCardFragment();
+        Bundle args = new Bundle();
+        args.putString("title","CardFragment");
+        args.putString("msg","Card customizado.");
+        cardFragment.setArguments(args);
         fragmentTransaction.add(R.id.cardLayout, cardFragment);
         fragmentTransaction.commit();
     }

@@ -26,6 +26,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
 
         String[] items = new String[]{
                 "CardView",
+                "CustomCardView",
                 "ListView",
                 "ViewPager",
                 "Sair"};
@@ -43,7 +44,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
                     wearUtil.sendMessage("/hello", "CardView".getBytes());
                     break;
                 case 1:
-                    wearUtil.sendMessage("/hello","ListView".getBytes());
+                    wearUtil.sendMessage("/hello","CustomCardView".getBytes());
                     break;
                 case 2:
 
