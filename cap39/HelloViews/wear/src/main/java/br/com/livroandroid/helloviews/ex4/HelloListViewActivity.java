@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.livroandroid.helloviews.R;
+import br.com.livroandroid.shared.Carro;
 
 /**
  * Created by ricardo on 19/04/15.
  */
 public class HelloListViewActivity extends Activity implements WearableListView.ClickListener {
     // Sample dataset for the list
-    private List<Carro> carros = new ArrayList<Carro>();
+    private List<Carro> carros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +27,7 @@ public class HelloListViewActivity extends Activity implements WearableListView.
         WearableListView listView =
                 (WearableListView) findViewById(R.id.wearable_list);
 
-        carros.add(new Carro("Ferrari FF",R.drawable.ferrari_ff));
-        carros.add(new Carro("AUDI GT Spyder",R.drawable.audi_spyder));
-        carros.add(new Carro("Porsche Panamera",R.drawable.porsche_panamera));
-        carros.add(new Carro("Lamborghini Aventador",R.drawable.lamborghini_aventador));
-        carros.add(new Carro("Chevrolet Corvette Z06",R.drawable.chevrolet_corvette_z06));
-        carros.add(new Carro("BMW M5",R.drawable.bmw));
-        carros.add(new Carro("Renault Megane",R.drawable.renault_megane_trophy));
-        carros.add(new Carro("Maserati Grancabrio Sport",R.drawable.maserati_grancabrio_sport));
-        carros.add(new Carro("McLAREN MP4-12C",R.drawable.mclaren));
-        carros.add(new Carro("MERCEDES-BENZ C63 AMG",R.drawable.mercedes_bens));
+        carros = Carro.getListEsportivos();
 
         listView.setAdapter(new HelloAdapter(this, carros));
         listView.setClickListener(this);

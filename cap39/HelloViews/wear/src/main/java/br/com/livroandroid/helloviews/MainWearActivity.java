@@ -13,6 +13,7 @@ import br.com.livroandroid.helloviews.ex1.CardViewActivity;
 import br.com.livroandroid.helloviews.ex2.MyCardViewActivity;
 import br.com.livroandroid.helloviews.ex3.CardFrameActivity;
 import br.com.livroandroid.helloviews.ex4.HelloListViewActivity;
+import br.com.livroandroid.helloviews.ex5.HelloViewPagerActivity;
 import br.com.livroandroid.shared.WearUtil;
 
 public class MainWearActivity extends Activity implements MessageApi.MessageListener {
@@ -59,6 +60,8 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
             startActivity(new Intent(this,CardFrameActivity.class));
         } else if("ListView".equals(msg)) {
             startActivity(new Intent(this,HelloListViewActivity.class));
+        } else if("ViewPager".equals(msg)) {
+            startActivity(new Intent(this,HelloViewPagerActivity.class));
         }
     }
 }

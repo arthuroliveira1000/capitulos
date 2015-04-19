@@ -23,6 +23,7 @@
         <activity android:name=".ex3.CardFrameActivity" />
         <activity android:name=".ex4.HelloListViewActivity" />
         <activity android:name=".ex4.CarroActivity" />
+        <activity android:name=".ex5.HelloViewPagerActivity" />
     </application>
 
 </manifest>

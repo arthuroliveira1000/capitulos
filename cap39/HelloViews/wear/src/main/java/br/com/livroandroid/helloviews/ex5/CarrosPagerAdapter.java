@@ -1,4 +1,4 @@
-package br.com.livroandroid.cap07_view;
+package br.com.livroandroid.helloviews.ex5;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -8,41 +8,46 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-public class ImagemPagerAdapter extends PagerAdapter {
-    private Context ctx;
-    private final int[] imagens;
+import java.util.List;
 
-    public ImagemPagerAdapter(Context c, int[] imagens) {
-        this.ctx = c;
-        this.imagens = imagens;
+import br.com.livroandroid.helloviews.R;
+import br.com.livroandroid.shared.Carro;
+
+/**
+ * Created by ricardo on 19/04/15.
+ */
+public class CarrosPagerAdapter extends PagerAdapter {
+    private final LayoutInflater mInflater;
+    private final List<Carro> carros;
+
+    public CarrosPagerAdapter(Context context, List<Carro> carros) {
+        mInflater = LayoutInflater.from(context);
+        this.carros = carros;
     }
 
     @Override
     public int getCount() {
-        // Quantidade de views do adapter
-        return imagens != null ? imagens.length : 0;
+        return carros != null ? carros.size() : 0;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         // Infla a view
-        View view = LayoutInflater.from(this.ctx).inflate(R.layout.adapter_imagem, container, false);
+        View view = mInflater.inflate(R.layout.adapter_carro_pager, container, false);
         ImageView img = (ImageView) view.findViewById(R.id.img);
-        img.setImageResource(imagens[position]);
-        // Adiciona no layout ViewGroup
+        Carro c = carros.get(position);
+        img.setImageResource(c.img);
         ((ViewGroup) container).addView(view);
         return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object view) {
-        // Remove do container
         ((ViewPager) container).removeView((View) view);
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        // Determina se a view informada é igual ao object retornado pelo instantiateItem
         return view == object;
     }
 }

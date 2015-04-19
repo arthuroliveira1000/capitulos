@@ -1,5 +1,6 @@
 package br.com.livroandroid.helloviews;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,6 +42,9 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         try {
             String item = parent.getAdapter().getItem(position).toString();
+            if("ViewPager".equals(item)) {
+                startActivity(new Intent(this,HelloViewPagerActivity.class));
+            }
             // Envia a mensagem com o texto do item selecinoado
             wearUtil.sendMessage("/hello", item.getBytes());
         } catch (Exception e) {

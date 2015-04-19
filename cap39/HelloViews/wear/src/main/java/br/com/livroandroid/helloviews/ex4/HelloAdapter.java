@@ -1,7 +1,6 @@
 package br.com.livroandroid.helloviews.ex4;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.wearable.view.WearableListView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.livroandroid.helloviews.R;
+import br.com.livroandroid.shared.Carro;
 
 /**
  * Created by ricardo on 19/04/15.
@@ -38,7 +38,7 @@ public class HelloAdapter extends WearableListView.Adapter {
     @Override
     public WearableListView.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                           int viewType) {
-        return new ItemViewHolder(mInflater.inflate(R.layout.adapter_list_view, parent,false));
+        return new ItemViewHolder(mInflater.inflate(R.layout.adapter_carro, parent,false));
     }
 
     @Override

@@ -3,9 +3,9 @@ package br.com.livroandroid.helloviews.ex4;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import br.com.livroandroid.helloviews.R;
+import br.com.livroandroid.shared.Carro;
 
 /**
  * Created by ricardo on 19/04/15.
