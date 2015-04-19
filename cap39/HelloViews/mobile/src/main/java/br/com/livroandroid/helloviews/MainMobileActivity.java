@@ -27,6 +27,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
         String[] items = new String[]{
                 "CardView",
                 "CustomCardView",
+                "CardFrame",
                 "ListView",
                 "ViewPager",
                 "Sair"};
@@ -39,20 +40,9 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         try {
-            switch (position) {
-                case 0:
-                    wearUtil.sendMessage("/hello", "CardView".getBytes());
-                    break;
-                case 1:
-                    wearUtil.sendMessage("/hello","CustomCardView".getBytes());
-                    break;
-                case 2:
-
-                    break;
-                default:
-                    finish();
-                    break;
-            }
+            String item = parent.getAdapter().getItem(position).toString();
+            // Envia a mensagem com o texto do item selecinoado
+            wearUtil.sendMessage("/hello", item.getBytes());
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), "Erro :" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }

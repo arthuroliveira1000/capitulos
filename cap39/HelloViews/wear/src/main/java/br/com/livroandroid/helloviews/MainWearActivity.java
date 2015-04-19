@@ -3,7 +3,6 @@ package br.com.livroandroid.helloviews;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -12,6 +11,7 @@ import com.google.android.gms.wearable.MessageEvent;
 
 import br.com.livroandroid.helloviews.ex1.CardViewActivity;
 import br.com.livroandroid.helloviews.ex2.MyCardViewActivity;
+import br.com.livroandroid.helloviews.ex3.CardFrameActivity;
 import br.com.livroandroid.shared.WearUtil;
 
 public class MainWearActivity extends Activity implements MessageApi.MessageListener {
@@ -54,6 +54,8 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
             startActivity(new Intent(this,CardViewActivity.class));
         } else if("CustomCardView".equals(msg)) {
             startActivity(new Intent(this,MyCardViewActivity.class));
+        } else if("CardFrame".equals(msg)) {
+            startActivity(new Intent(this,CardFrameActivity.class));
         }
     }
 }

@@ -19,7 +19,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CardViewActivity"
+            android:name=".ex1.CardViewActivity"
+            android:label="@string/title_activity_card_view" >
+        </activity>
+        <activity
+            android:name=".ex2.MyCardViewActivity"
+            android:label="@string/title_activity_card_view" >
+        </activity>
+        <activity
+            android:name=".ex3.CardFrameActivity"
             android:label="@string/title_activity_card_view" >
         </activity>
     </application>
