@@ -91,13 +91,14 @@ public class WearUtil {
         mGoogleApiClient.connect();
     }
 
-    // Disconecta do Google Play Services
+    // Desconecta do Google Play Services
     public void disconnect() {
         Log.d(TAG, "disconnect()");
         if(mGoogleApiClient.isConnected()) {
             // Desliga as APIs do wear
             Wearable.DataApi.removeListener(mGoogleApiClient, this.dataListener);
             Wearable.MessageApi.removeListener(mGoogleApiClient, this.messageListener);
+            Wearable.NodeApi.removeListener(mGoogleApiClient, this.nodeListener);
         }
         mGoogleApiClient.disconnect();
     }
@@ -121,7 +122,7 @@ public class WearUtil {
     }
 
     // Descobre o id do outro device (mobile ou wear)
-    private void findDeviceNodeId() {
+    public void findDeviceNodeId() {
         // Chamada assíncrona, informa o callback
         Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).setResultCallback(
                 new ResultCallback<NodeApi.GetConnectedNodesResult>() {

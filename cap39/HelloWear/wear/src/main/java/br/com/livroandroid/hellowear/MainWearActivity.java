@@ -1,4 +1,4 @@
-package br.com.livroandroid.hellodataapi;
+package br.com.livroandroid.hellowear;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -56,14 +56,10 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
     public void onDataChanged(DataEventBuffer dataEventBuffer) {
         Log.d(TAG, "onDataChanged()");
         for (DataEvent event : dataEventBuffer) {
-            Log.d(TAG, "onDataChanged() 1");
             if (event.getType() == DataEvent.TYPE_CHANGED) {
-                Log.d(TAG, "onDataChanged() TYPE_CHANGED");
                 // DataItem changed
                 DataItem item = event.getDataItem();
-                Log.d(TAG, "onDataChanged() item: " + item.getUri());
                 if (item.getUri().getPath().compareTo("/msg") == 0) {
-                    Log.d(TAG, "onDataChanged() OH YES");
                     // Lê a mensagem enviad pela Data API
                     DataMap dataMap = DataMapItem.fromDataItem(item).getDataMap();
                     final String msg = dataMap.getString("msg");

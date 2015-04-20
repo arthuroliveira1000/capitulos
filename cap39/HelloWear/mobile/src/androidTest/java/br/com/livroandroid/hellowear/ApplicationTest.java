@@ -1,4 +1,4 @@
-package br.com.livroandroid.hellodataapi;
+package br.com.livroandroid.hellowear;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
