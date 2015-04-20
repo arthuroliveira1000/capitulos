@@ -24,6 +24,9 @@
         <activity android:name=".ex4.HelloListViewActivity" />
         <activity android:name=".ex4.CarroActivity" />
         <activity android:name=".ex5.HelloViewPagerActivity" />
+        <activity android:name=".ex6.HelloGridViewPagerActivity" />
+        <activity android:name=".ex7.ConfirmationDelayedActivity" />
+        <activity  android:name="android.support.wearable.activity.ConfirmationActivity" />
     </application>
 
 </manifest>

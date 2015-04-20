@@ -19,12 +19,12 @@ public class MyCardViewActivity extends Activity {
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        MyCardFragment cardFragment = new MyCardFragment();
+        MyCardFragment card = new MyCardFragment();
         Bundle args = new Bundle();
         args.putString("title","CardFragment");
         args.putString("msg","Card customizado.");
-        cardFragment.setArguments(args);
-        fragmentTransaction.add(R.id.cardLayout, cardFragment);
+        card.setArguments(args);
+        fragmentTransaction.add(R.id.cardLayout, card);
         fragmentTransaction.commit();
     }
 }

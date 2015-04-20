@@ -1,11 +1,8 @@
 package br.com.livroandroid.helloviews.ex5;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.wearable.view.WearableListView;
-import android.widget.Toast;
 
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
@@ -13,10 +10,8 @@ import com.google.android.gms.wearable.MessageEvent;
 import java.util.List;
 
 import br.com.livroandroid.helloviews.R;
-import br.com.livroandroid.helloviews.ex4.CarroActivity;
-import br.com.livroandroid.helloviews.ex4.HelloAdapter;
 import br.com.livroandroid.shared.Carro;
-import br.com.livroandroid.shared.WearUtil;
+import livroandroid.lib.wear.WearUtil;
 
 /**
  * Created by ricardo on 19/04/15.

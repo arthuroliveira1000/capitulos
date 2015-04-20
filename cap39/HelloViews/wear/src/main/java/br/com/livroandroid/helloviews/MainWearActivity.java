@@ -3,6 +3,7 @@ package br.com.livroandroid.helloviews;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.wearable.activity.ConfirmationActivity;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -14,7 +15,9 @@ import br.com.livroandroid.helloviews.ex2.MyCardViewActivity;
 import br.com.livroandroid.helloviews.ex3.CardFrameActivity;
 import br.com.livroandroid.helloviews.ex4.HelloListViewActivity;
 import br.com.livroandroid.helloviews.ex5.HelloViewPagerActivity;
-import br.com.livroandroid.shared.WearUtil;
+import br.com.livroandroid.helloviews.ex6.HelloGridViewPagerActivity;
+import br.com.livroandroid.helloviews.ex7.ConfirmationDelayedActivity;
+import livroandroid.lib.wear.WearUtil;
 
 public class MainWearActivity extends Activity implements MessageApi.MessageListener {
 
@@ -62,6 +65,22 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
             startActivity(new Intent(this,HelloListViewActivity.class));
         } else if("ViewPager".equals(msg)) {
             startActivity(new Intent(this,HelloViewPagerActivity.class));
+        } else if("GridViewPager".equals(msg)) {
+            startActivity(new Intent(this,HelloGridViewPagerActivity.class));
+        } else if("Confirmation Delayed".equals(msg)) {
+            startActivity(new Intent(this,ConfirmationDelayedActivity.class));
+        } else if("Confirmation Success".equals(msg)) {
+            Intent intent = new Intent(this, ConfirmationActivity.class);
+            intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
+                    ConfirmationActivity.OPEN_ON_PHONE_ANIMATION);
+            intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "Mensagem de sucesso!");
+            startActivity(intent);
+        } else if("Confirmation Error".equals(msg)) {
+            Intent intent = new Intent(this, ConfirmationActivity.class);
+            intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
+                    ConfirmationActivity.FAILURE_ANIMATION);
+            intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "Mensagem de erro!");
+            startActivity(intent);
         }
     }
 }

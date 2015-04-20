@@ -8,8 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import br.com.livroandroid.shared.WearUtil;
+
 import livroandroid.lib.activity.BaseActivity;
+import livroandroid.lib.wear.WearUtil;
 
 
 public class MainMobileActivity extends BaseActivity implements AdapterView.OnItemClickListener {
@@ -31,6 +32,10 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
                 "CardFrame",
                 "ListView",
                 "ViewPager",
+                "GridViewPager",
+                "Confirmation Delayed",
+                "Confirmation Success",
+                "Confirmation Error",
                 "Sair"};
 
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -43,6 +48,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
         try {
             String item = parent.getAdapter().getItem(position).toString();
             if("ViewPager".equals(item)) {
+                // Para o ViewPager abre uma activity aqui no mobile também
                 startActivity(new Intent(this,HelloViewPagerActivity.class));
             }
             // Envia a mensagem com o texto do item selecinoado
