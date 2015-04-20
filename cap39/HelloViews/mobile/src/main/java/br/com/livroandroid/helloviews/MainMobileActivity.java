@@ -27,6 +27,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
         wearUtil = new WearUtil(this);
 
         String[] items = new String[]{
+                "Notification",
                 "CardView",
                 "CustomCardView",
                 "CardFrame",

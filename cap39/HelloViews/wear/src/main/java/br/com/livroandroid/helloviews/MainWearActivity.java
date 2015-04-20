@@ -17,6 +17,7 @@ import br.com.livroandroid.helloviews.ex4.HelloListViewActivity;
 import br.com.livroandroid.helloviews.ex5.HelloViewPagerActivity;
 import br.com.livroandroid.helloviews.ex6.HelloGridViewPagerActivity;
 import br.com.livroandroid.helloviews.ex7.ConfirmationDelayedActivity;
+import livroandroid.lib.utils.NotificationUtil;
 import livroandroid.lib.wear.WearUtil;
 
 public class MainWearActivity extends Activity implements MessageApi.MessageListener {
@@ -55,7 +56,10 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
         byte[] bytes = messageEvent.getData();
         String msg = new String(bytes);
         Log.d(TAG, "onMessageReceived(): " + messageEvent.getPath() +" : " + msg);
-        if("CardView".equals(msg)) {
+        if("Notification".equals(msg)) {
+            Log.d(TAG, "AH");
+            NotificationUtil.create(this, R.mipmap.ic_launcher, "Livro Android", "Olá Wear");
+        } else if("CardView".equals(msg)) {
             startActivity(new Intent(this,CardViewActivity.class));
         } else if("CustomCardView".equals(msg)) {
             startActivity(new Intent(this,MyCardViewActivity.class));
@@ -72,7 +76,7 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
         } else if("Confirmation Success".equals(msg)) {
             Intent intent = new Intent(this, ConfirmationActivity.class);
             intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
-                    ConfirmationActivity.OPEN_ON_PHONE_ANIMATION);
+                    ConfirmationActivity.SUCCESS_ANIMATION);
             intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "Mensagem de sucesso!");
             startActivity(intent);
         } else if("Confirmation Error".equals(msg)) {
