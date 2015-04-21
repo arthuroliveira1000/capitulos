@@ -21,7 +21,6 @@ import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 
 import br.com.livroandroid.shared.WearUtil;
-import livroandroid.lib.wear.WearBitmapUtil;
 
 public class MainWearActivity extends Activity implements DataApi.DataListener, MessageApi.MessageListener {
 
@@ -65,34 +64,25 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
         Log.d(TAG, "onDataChanged()");
         for (DataEvent event : dataEventBuffer) {
             if (event.getType() == DataEvent.TYPE_CHANGED) {
-                // DataItem changed
                 DataItem item = event.getDataItem();
                 if (item.getUri().getPath().compareTo("/msg") == 0) {
                     // Lê a mensagem enviad pela Data API
                     DataMap dataMap = DataMapItem.fromDataItem(item).getDataMap();
                     final String msg = dataMap.getString("msg");
                     final int count = dataMap.getInt("count");
+                    Asset asset = dataMap.getAsset("foto");
+                    final Bitmap bitmap = wearUtil.getBitmapFromAsset(asset);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mTextView.setText(msg + "\nCount: " + count);
-                        }
-                    });
-                } else if (item.getUri().getPath().compareTo("/foto") == 0) {
-                    DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
-                    Asset photo = dataMapItem.getDataMap().getAsset("foto");
-                    GoogleApiClient googleApiClient = wearUtil.getGoogleApiClient();
-                    final Bitmap bitmap = WearBitmapUtil.getBitmapFromAsset(googleApiClient, photo);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
                             // Altera o fundo do layout com o Bitmap
                             rootLayout.setBackground(new BitmapDrawable(getResources(), bitmap));
                         }
                     });
                 }
             } else if (event.getType() == DataEvent.TYPE_DELETED) {
-                // DataItem deleted
+                // DataItem TYPE_DELETED
             }
         }
     }

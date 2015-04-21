@@ -2,33 +2,23 @@ package br.com.livroandroid.camera;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.Asset;
-import com.google.android.gms.wearable.DataApi;
-import com.google.android.gms.wearable.PutDataMapRequest;
-import com.google.android.gms.wearable.PutDataRequest;
-import com.google.android.gms.wearable.Wearable;
 
 import java.io.File;
-import java.util.Date;
 
 import livroandroid.lib.activity.BaseActivity;
 import livroandroid.lib.utils.ImageResizeUtils;
 import livroandroid.lib.utils.SDCardUtils;
-import livroandroid.lib.wear.*;
+import livroandroid.lib.wear.WearUtil;
 
 
 public class MainActivity extends BaseActivity {
@@ -67,34 +57,18 @@ public class MainActivity extends BaseActivity {
                 if (file != null && file.exists()) {
                     Log.d("foto", file.getAbsolutePath());
 
-                    int w = 320;
-                    int h = 320;
+                    int w = 100;
+                    int h = 100;
                     Bitmap bitmap = ImageResizeUtils.getResizedImage(Uri.fromFile(file), w, h, false);
 
+                    // Converte o btmap para Asset
                     Asset asset = livroandroid.lib.wear.WearBitmapUtil.getAssetFromBitmap(bitmap);
 
+                    // Envia o assert para o relogio
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("foto", asset);
-                    wearUtil.putData("/foto",bundle);
-
-                    //WearBitmapUtil.putDataAsset(wearUtil.getGoogleApiClient(),bitmap,"/foto","foto");
+                    wearUtil.putData("/foto", bundle);
                 }
-            }
-            private void sendBitmap(Bitmap bitmap) {
-                Asset asset = livroandroid.lib.wear.WearBitmapUtil.getAssetFromBitmap(bitmap);
-                PutDataMapRequest dataMap = PutDataMapRequest.create("/foto");
-                dataMap.getDataMap().putAsset("foto", asset);
-                dataMap.getDataMap().putLong("time", new Date().getTime());
-                PutDataRequest request = dataMap.asPutDataRequest();
-                GoogleApiClient googleApiClient = wearUtil.getGoogleApiClient();
-                Wearable.DataApi.putDataItem(googleApiClient, request)
-                        .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-                            @Override
-                            public void onResult(DataApi.DataItemResult dataItemResult) {
-                                Log.d("camera", "Sending image was successful: " + dataItemResult.getStatus()
-                                        .isSuccess());
-                            }
-                        });
             }
         });
 
