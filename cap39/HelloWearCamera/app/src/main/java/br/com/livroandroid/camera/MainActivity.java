@@ -71,9 +71,13 @@ public class MainActivity extends BaseActivity {
                     int h = 320;
                     Bitmap bitmap = ImageResizeUtils.getResizedImage(Uri.fromFile(file), w, h, false);
 
-//                    sendBitmap(bitmap);
+                    Asset asset = livroandroid.lib.wear.WearBitmapUtil.getAssetFromBitmap(bitmap);
 
-                    WearBitmapUtil.putDataAsset(wearUtil.getGoogleApiClient(),bitmap,"/foto","foto");
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("foto", asset);
+                    wearUtil.putData("/foto",bundle);
+
+                    //WearBitmapUtil.putDataAsset(wearUtil.getGoogleApiClient(),bitmap,"/foto","foto");
                 }
             }
             private void sendBitmap(Bitmap bitmap) {
