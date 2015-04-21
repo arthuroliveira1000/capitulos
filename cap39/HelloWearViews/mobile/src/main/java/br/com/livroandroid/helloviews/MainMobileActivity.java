@@ -34,6 +34,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
                 "ListView",
                 "ViewPager",
                 "GridViewPager",
+                "Full Screen",
                 "Confirmation Delayed",
                 "Confirmation Success",
                 "Confirmation Error",
@@ -52,8 +53,8 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
                 // Para o ViewPager abre uma activity aqui no mobile também
                 startActivity(new Intent(this,HelloViewPagerActivity.class));
             }
-            // Envia a mensagem com o texto do item selecinoado
-            wearUtil.sendMessage("/hello", item.getBytes());
+            // Envia a mensagem com o texto do item selecionado
+            wearUtil.sendMessage("/" + item, new byte[]{1});
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), "Erro :" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }

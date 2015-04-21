@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.livroandroid.helloviews">
+    package="br.com.livroandroid.helloviews" >
 
     <uses-feature android:name="android.hardware.type.watch" />
 
@@ -8,10 +8,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.DeviceDefault">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainWearActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,8 +25,10 @@
         <activity android:name=".ex4.CarroActivity" />
         <activity android:name=".ex5.HelloViewPagerActivity" />
         <activity android:name=".ex6.HelloGridViewPagerActivity" />
-        <activity android:name=".ex7.ConfirmationDelayedActivity" />
-        <activity  android:name="android.support.wearable.activity.ConfirmationActivity" />
+        <activity android:name=".ex7.FullScreenActivity" android:theme="@style/FullScreenTheme" />
+        <activity android:name=".ex8.ConfirmationDelayedActivity" />
+        <activity android:name="android.support.wearable.activity.ConfirmationActivity" />
+
     </application>
 
 </manifest>

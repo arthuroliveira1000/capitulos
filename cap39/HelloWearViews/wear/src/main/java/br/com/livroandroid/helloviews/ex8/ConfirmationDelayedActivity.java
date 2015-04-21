@@ -1,4 +1,4 @@
-package br.com.livroandroid.helloviews.ex7;
+package br.com.livroandroid.helloviews.ex8;
 
 import android.app.Activity;
 import android.app.Notification;

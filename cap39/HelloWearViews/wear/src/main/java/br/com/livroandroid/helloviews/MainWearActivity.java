@@ -16,7 +16,7 @@ import br.com.livroandroid.helloviews.ex3.CardFrameActivity;
 import br.com.livroandroid.helloviews.ex4.HelloListViewActivity;
 import br.com.livroandroid.helloviews.ex5.HelloViewPagerActivity;
 import br.com.livroandroid.helloviews.ex6.HelloGridViewPagerActivity;
-import br.com.livroandroid.helloviews.ex7.ConfirmationDelayedActivity;
+import br.com.livroandroid.helloviews.ex7.FullScreenActivity;
 import livroandroid.lib.utils.NotificationUtil;
 import livroandroid.lib.wear.WearUtil;
 
@@ -53,33 +53,34 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
 
     @Override
     public void onMessageReceived(final MessageEvent messageEvent) {
-        byte[] bytes = messageEvent.getData();
-        String msg = new String(bytes);
+        String msg = messageEvent.getPath();
         Log.d(TAG, "onMessageReceived(): " + messageEvent.getPath() +" : " + msg);
-        if("Notification".equals(msg)) {
+        if("/Notification".equals(msg)) {
             Log.d(TAG, "AH");
             NotificationUtil.create(this, R.mipmap.ic_launcher, "Livro Android", "Olá Wear");
-        } else if("CardView".equals(msg)) {
+        } else if("/CardView".equals(msg)) {
             startActivity(new Intent(this,CardViewActivity.class));
-        } else if("CustomCardView".equals(msg)) {
+        } else if("/CustomCardView".equals(msg)) {
             startActivity(new Intent(this,MyCardViewActivity.class));
-        } else if("CardFrame".equals(msg)) {
+        } else if("/CardFrame".equals(msg)) {
             startActivity(new Intent(this,CardFrameActivity.class));
-        } else if("ListView".equals(msg)) {
+        } else if("/ListView".equals(msg)) {
             startActivity(new Intent(this,HelloListViewActivity.class));
-        } else if("ViewPager".equals(msg)) {
+        } else if("/ViewPager".equals(msg)) {
             startActivity(new Intent(this,HelloViewPagerActivity.class));
-        } else if("GridViewPager".equals(msg)) {
+        } else if("/GridViewPager".equals(msg)) {
             startActivity(new Intent(this,HelloGridViewPagerActivity.class));
-        } else if("Confirmation Delayed".equals(msg)) {
-            startActivity(new Intent(this,ConfirmationDelayedActivity.class));
-        } else if("Confirmation Success".equals(msg)) {
+        } else if("/GridViewPager".equals(msg)) {
+            startActivity(new Intent(this,HelloGridViewPagerActivity.class));
+        } else if("/Full Screen".equals(msg)) {
+            startActivity(new Intent(this,FullScreenActivity.class));
+        } else if("/Confirmation Success".equals(msg)) {
             Intent intent = new Intent(this, ConfirmationActivity.class);
             intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
                     ConfirmationActivity.SUCCESS_ANIMATION);
             intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "Mensagem de sucesso!");
             startActivity(intent);
-        } else if("Confirmation Error".equals(msg)) {
+        } else if("/Confirmation Error".equals(msg)) {
             Intent intent = new Intent(this, ConfirmationActivity.class);
             intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
                     ConfirmationActivity.FAILURE_ANIMATION);
