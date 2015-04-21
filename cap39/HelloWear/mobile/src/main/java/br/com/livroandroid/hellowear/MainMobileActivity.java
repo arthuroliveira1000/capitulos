@@ -64,13 +64,6 @@ public class MainMobileActivity extends BaseActivity {
         count++;
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ferrari_ff);
         Asset asset = WearBitmapUtil.getAssetFromBitmap(bitmap);
-//        PutDataMapRequest dataMapRequest = PutDataMapRequest.create("/foto");
-//        dataMapRequest.getDataMap().putAsset("foto", asset);
-//        dataMapRequest.getDataMap().putLong("time", new Date().getTime());
-//        PutDataRequest request = dataMapRequest.asPutDataRequest();
-//        Wearable.DataApi
-//                .putDataItem(wearUtil.getGoogleApiClient(), request);
-
         PutDataMapRequest dataMap = PutDataMapRequest.create("/foto");
         dataMap.getDataMap().putAsset("foto", asset);
         dataMap.getDataMap().putLong("time", new Date().getTime());

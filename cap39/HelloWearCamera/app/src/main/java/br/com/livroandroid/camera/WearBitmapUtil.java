@@ -7,11 +7,13 @@ import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Asset;
+import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -39,8 +41,11 @@ public class WearBitmapUtil {
     // Envia o Asset pela Data API
     public static void putDataAsset(GoogleApiClient googleApiClient,Bitmap bitmap,String path,String assetKey) {
         Asset asset = getAssetFromBitmap(bitmap);
-        PutDataRequest request = PutDataRequest.create(path);
-        request.putAsset(assetKey, asset);
+        PutDataMapRequest dataMap = PutDataMapRequest.create(path);
+        dataMap.getDataMap().putAsset(assetKey, asset);
+        dataMap.getDataMap().putLong("time", new Date().getTime());
+        PutDataRequest request = dataMap.asPutDataRequest();
+
         Wearable.DataApi.putDataItem(googleApiClient, request);
     }
 }

@@ -6,7 +6,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "br.com.livroandroid.wear"
+        applicationId "br.com.livroandroid.camera"
         minSdkVersion 21
         targetSdkVersion 22
         versionCode 1
