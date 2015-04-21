@@ -47,8 +47,8 @@ public class MainMobileActivity extends BaseActivity {
         b.putString("msg", "Olá Data API");
         b.putInt("count", count);
         // Converte o btmap para Asset e envia
-        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.audi_spyder);
-        Bitmap bitmap = ImageResizeUtils.getResizedImageResource(this,R.drawable.audi_spyder,50,50);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ferrari_ff);
+        //Bitmap bitmap = ImageResizeUtils.getResizedImageResource(this, R.drawable.audi_spyder, 50, 50);
         // Faz resize
         // Cria o Asset
         Asset asset = wearUtil.getAssetFromBitmap(bitmap);

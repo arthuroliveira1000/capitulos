@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -27,7 +28,7 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
     private static final String TAG = "wear";
     private TextView mTextView;
     private WearUtil wearUtil;
-    private View rootLayout;
+    private ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 mTextView = (TextView) stub.findViewById(R.id.text);
-                rootLayout = stub.findViewById(R.id.rootLayout);
+                img = (ImageView) stub.findViewById(R.id.img);
             }
         });
 
@@ -77,7 +78,7 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
                         public void run() {
                             mTextView.setText(msg + "\nCount: " + count);
                             // Altera o fundo do layout com o Bitmap
-                            rootLayout.setBackground(new BitmapDrawable(getResources(), bitmap));
+                            img.setImageBitmap(bitmap);
                         }
                     });
                 }
