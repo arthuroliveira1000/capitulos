@@ -1,11 +1,16 @@
 package br.com.livroandroid.hellowear;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
@@ -16,12 +21,14 @@ import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 
 import br.com.livroandroid.shared.WearUtil;
+import livroandroid.lib.wear.WearBitmapUtil;
 
 public class MainWearActivity extends Activity implements DataApi.DataListener, MessageApi.MessageListener {
 
     private static final String TAG = "wear";
     private TextView mTextView;
     private WearUtil wearUtil;
+    private View rootLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,7 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 mTextView = (TextView) stub.findViewById(R.id.text);
+                rootLayout = stub.findViewById(R.id.rootLayout);
             }
         });
 
@@ -68,6 +76,18 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
                         @Override
                         public void run() {
                             mTextView.setText(msg + "\nCount: " + count);
+                        }
+                    });
+                } else if (item.getUri().getPath().compareTo("/foto") == 0) {
+                    DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
+                    Asset photo = dataMapItem.getDataMap().getAsset("foto");
+                    GoogleApiClient googleApiClient = wearUtil.getGoogleApiClient();
+                    final Bitmap bitmap = WearBitmapUtil.getBitmapFromAsset(googleApiClient, photo);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Altera o fundo do layout com o Bitmap
+                            rootLayout.setBackground(new BitmapDrawable(getResources(), bitmap));
                         }
                     });
                 }

@@ -138,4 +138,8 @@ public class WearUtil {
                 }
         );
     }
+
+    public GoogleApiClient getGoogleApiClient() {
+        return mGoogleApiClient;
+    }
 }
