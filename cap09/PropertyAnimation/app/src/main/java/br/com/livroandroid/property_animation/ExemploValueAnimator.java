@@ -3,12 +3,12 @@ package br.com.livroandroid.property_animation;
 import android.animation.AnimatorInflater;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-public class ExemploValueAnimator extends ActionBarActivity {
+public class ExemploValueAnimator extends AppCompatActivity {
     private boolean visivel = true;
 
     @Override

@@ -1,13 +1,13 @@
 package br.com.livroandroid.property_animation;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 
-public class ExemploViewPropertyAnimatorActivity extends ActionBarActivity {
+public class ExemploViewPropertyAnimatorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

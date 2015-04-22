@@ -1,10 +1,10 @@
 package br.com.livroandroid.hellomaterial;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 
-public class ExemploRippleActivity extends ActionBarActivity {
+public class ExemploRippleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

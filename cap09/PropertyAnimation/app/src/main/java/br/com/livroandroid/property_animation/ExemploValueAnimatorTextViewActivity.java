@@ -2,12 +2,12 @@ package br.com.livroandroid.property_animation;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
 
-public class ExemploValueAnimatorTextViewActivity extends ActionBarActivity {
+public class ExemploValueAnimatorTextViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,7 +3,7 @@ package br.com.livroandroid.handler;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,7 +22,7 @@ import java.io.InputStream;
  *
  * Mostra como atualizar a interface na UI Thread com o método runOnUiThread(runnable)
  */
-public class DownloadImagemActivity extends ActionBarActivity {
+public class DownloadImagemActivity extends AppCompatActivity {
     private static final String URL = "http://livroandroid.com.br/imgs/livro_android.png";
     private ProgressBar progress;
     @Override

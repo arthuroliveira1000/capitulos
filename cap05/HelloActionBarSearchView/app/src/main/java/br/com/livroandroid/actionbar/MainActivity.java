@@ -53,12 +53,12 @@ public class MainActivity extends Activity {
                 toast("Buscar o texto: " + query);
                 return false;
             }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        };
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
     }
+};
+}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

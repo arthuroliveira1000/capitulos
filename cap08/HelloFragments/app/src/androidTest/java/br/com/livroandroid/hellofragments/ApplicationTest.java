@@ -1,4 +1,4 @@
-package br.com.livroandroid.cap09_hellofragments;
+package br.com.livroandroid.hellofragments;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

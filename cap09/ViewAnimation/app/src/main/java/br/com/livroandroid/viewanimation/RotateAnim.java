@@ -1,14 +1,14 @@
 package br.com.livroandroid.viewanimation;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
-public class RotateAnim extends ActionBarActivity {
+public class RotateAnim extends AppCompatActivity {
     private boolean flag = true;
 
     @Override

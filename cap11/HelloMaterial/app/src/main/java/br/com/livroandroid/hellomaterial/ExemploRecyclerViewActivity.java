@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class ExemploRecyclerViewActivity extends ActionBarActivity {
+public class ExemploRecyclerViewActivity extends AppCompatActivity {
 
     protected RecyclerView recyclerView;
     protected List<Planeta> planetas;

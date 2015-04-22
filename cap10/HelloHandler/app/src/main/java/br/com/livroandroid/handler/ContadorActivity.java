@@ -1,7 +1,7 @@
 package br.com.livroandroid.handler;
 
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class ContadorActivity extends ActionBarActivity implements Runnable {
+public class ContadorActivity extends AppCompatActivity implements Runnable {
     private static final String CATEGORIA = "livro";
     private int count;
     private TextView text;

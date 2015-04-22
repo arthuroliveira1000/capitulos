@@ -17,7 +17,7 @@
 package br.com.livroandroid.anim_activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * See WindowAnimations.java for comments on the overall application.
@@ -25,7 +25,7 @@ import android.support.v7.app.ActionBarActivity;
  * This is a sub-activity which provides custom animation behavior. When this activity
  * is exited, the user will see the behavior specified in the overridePendingTransition() call.
  */
-public class AnimatedSubActivity extends ActionBarActivity {
+public class AnimatedSubActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

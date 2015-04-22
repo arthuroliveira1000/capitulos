@@ -1,7 +1,7 @@
 package br.com.livroandroid.hellomaterial;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.widget.SeekBar;
 
@@ -12,7 +12,7 @@ import android.widget.SeekBar;
 * http://www.google.com/design/spec/components/cards.html#cards-usage
 *
 * */
-public class ExemploCardView extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener {
+public class ExemploCardView extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private CardView cardView;
     private SeekBar seekBar1;

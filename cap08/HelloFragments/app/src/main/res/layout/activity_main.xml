@@ -11,7 +11,7 @@
         android:id="@+id/frag1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="br.com.livroandroid.cap09_hellofragments.Fragment1"
+        class="hellofragmentsent1"
         tools:layout="@layout/fragment_1" />
     -->
 

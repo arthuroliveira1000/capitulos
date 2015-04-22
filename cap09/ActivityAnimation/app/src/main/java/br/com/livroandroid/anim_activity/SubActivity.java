@@ -17,7 +17,7 @@
 package br.com.livroandroid.anim_activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * See WindowAnimations.java for comments on the overall application.
@@ -25,7 +25,7 @@ import android.support.v7.app.ActionBarActivity;
  * This is a sub-activity which does not provide any custom animation. Exiting this
  * sub-activity therefore gets the default system behavior for window animations.
  */
-public class SubActivity extends ActionBarActivity {
+public class SubActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class ExemploProgressDialogActivity extends Activity {
-    private static final String URL = "http://livroandroid.com.br/imagens/livro01.png";
+    private static final String URL = "http://livroandroid.com.br/imgs/livro_android.png";
     private ProgressDialog dialog;
 
     @Override

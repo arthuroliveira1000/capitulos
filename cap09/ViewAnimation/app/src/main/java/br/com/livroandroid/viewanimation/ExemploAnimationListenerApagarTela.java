@@ -1,7 +1,7 @@
 package br.com.livroandroid.viewanimation;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class ExemploAnimationListenerApagarTela extends ActionBarActivity implements OnClickListener, AnimationListener {
+public class ExemploAnimationListenerApagarTela extends AppCompatActivity implements OnClickListener, AnimationListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,7 +1,7 @@
 package br.com.livroandroid.viewanimation;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 /**
  * Mostra a propriedade android:animateLayoutChanges="true" do layout.
  */
-public class ExemploAnimLayoutChanges extends ActionBarActivity {
+public class ExemploAnimLayoutChanges extends AppCompatActivity {
 
     private LinearLayout layout;
     private int count;

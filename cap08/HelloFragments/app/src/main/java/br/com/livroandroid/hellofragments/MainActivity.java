@@ -1,12 +1,12 @@
-package br.com.livroandroid.cap09_hellofragments;
+package br.com.livroandroid.hellofragments;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,10 +19,10 @@ public class MainActivity extends ActionBarActivity {
         //frag1.hello();
 
         // Adiciona o fragment dinamicamente pela API
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             FragmentTransaction ft = fm.beginTransaction();
             Fragment1 frag1 = new Fragment1();
-            ft.add(R.id.layoutFrag, frag1,"Fragment1");
+            ft.add(R.id.layoutFrag, frag1, "Fragment1");
             ft.commit();
         }
 

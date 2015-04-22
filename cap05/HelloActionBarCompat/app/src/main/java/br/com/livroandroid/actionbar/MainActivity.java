@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +19,15 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Capítulo 5");
+        actionBar.setTitle("ActionBar Compat");
 
         actionBar.setNavigationMode(android.app.ActionBar.NAVIGATION_MODE_TABS);
         // Cria as tabs (Passa como parâmetro o índice de cada tab: 1,2,3)
-        actionBar.addTab(actionBar.newTab().setText("Tab 1").setTabListener(new MyTabListener(this,1)));
-        actionBar.addTab(actionBar.newTab().setText("Tab 2").setTabListener(new MyTabListener(this,2)));
-        actionBar.addTab(actionBar.newTab().setText("Tab 3").setTabListener(new MyTabListener(this,3)));
+        actionBar.addTab(actionBar.newTab().setText("Tab 1").setTabListener(new MyTabListener(this, 1)));
+        actionBar.addTab(actionBar.newTab().setText("Tab 2").setTabListener(new MyTabListener(this, 2)));
+        actionBar.addTab(actionBar.newTab().setText("Tab 3").setTabListener(new MyTabListener(this, 3)));
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Infla o menu com os botões da action bar
@@ -53,12 +54,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private SearchView.OnQueryTextListener onSearch() {
-        return new SearchView.OnQueryTextListener(){
+        return new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 toast("Buscar o texto: " + query);
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
@@ -81,6 +83,7 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }

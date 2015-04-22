@@ -5,13 +5,13 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class ExemploActivityTransition extends ActionBarActivity {
+public class ExemploActivityTransition extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +101,7 @@ public class ExemploActivityTransition extends ActionBarActivity {
         };
     }
 
-    private ActionBarActivity getActivity() {
+    private AppCompatActivity getActivity() {
         return this;
     }
 

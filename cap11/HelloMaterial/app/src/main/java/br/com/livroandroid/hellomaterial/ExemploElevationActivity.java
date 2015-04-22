@@ -3,12 +3,12 @@ package br.com.livroandroid.hellomaterial;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.SeekBar;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class ExemploElevationActivity extends ActionBarActivity {
+public class ExemploElevationActivity extends AppCompatActivity {
 
     private SeekBar seekBar;
 

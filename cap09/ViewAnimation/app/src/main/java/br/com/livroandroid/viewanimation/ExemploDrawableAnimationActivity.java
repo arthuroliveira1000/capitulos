@@ -3,11 +3,11 @@ package br.com.livroandroid.viewanimation;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 
-public class ExemploDrawableAnimationActivity extends ActionBarActivity {
+public class ExemploDrawableAnimationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

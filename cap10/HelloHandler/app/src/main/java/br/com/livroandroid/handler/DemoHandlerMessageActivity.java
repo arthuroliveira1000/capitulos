@@ -3,7 +3,7 @@ package br.com.livroandroid.handler;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 /**
  * Exemplo de Handler com o método sendMessageDelayed(msg)
  */
-public class DemoHandlerMessageActivity extends ActionBarActivity {
+public class DemoHandlerMessageActivity extends AppCompatActivity {
 
     protected static final int MENSAGEM_TESTE = 1;
     private Handler handler = new TesteHandler();

@@ -1,4 +1,4 @@
-package br.com.livroandroid.cap09_hellofragments;
+package br.com.livroandroid.hellofragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
