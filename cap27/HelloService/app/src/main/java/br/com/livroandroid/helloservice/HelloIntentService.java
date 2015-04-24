@@ -7,8 +7,8 @@ import android.util.Log;
 /**
  * Created by Ricardo Lecheta on 15/03/2015.
  */
-public class ExemploServico_IntentService extends IntentService {
-    public ExemploServico_IntentService() {
+public class HelloIntentService extends IntentService {
+    public HelloIntentService() {
         super("NomeDaThreadAqui");
     }
     private static final int MAX = 10;

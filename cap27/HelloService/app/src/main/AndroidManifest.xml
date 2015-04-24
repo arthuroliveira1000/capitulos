@@ -17,6 +17,7 @@
         </activity>
         <service android:name=".HelloService" />
         <service android:name=".HelloService_WorkerThread" />
+        <service android:name=".HelloIntentService" />
     </application>
 
 </manifest>
