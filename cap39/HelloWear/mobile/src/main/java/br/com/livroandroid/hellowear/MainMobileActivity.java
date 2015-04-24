@@ -46,14 +46,11 @@ public class MainMobileActivity extends BaseActivity {
         Bundle b = new Bundle();
         b.putString("msg", "Olá Data API");
         b.putInt("count", count);
-        // Converte o btmap para Asset e envia
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ferrari_ff);
-        //Bitmap bitmap = ImageResizeUtils.getResizedImageResource(this, R.drawable.audi_spyder, 50, 50);
-        // Faz resize
         // Cria o Asset
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ferrari_ff);
         Asset asset = wearUtil.getAssetFromBitmap(bitmap);
         b.putParcelable("foto", asset);
-        // Compartilha do dados com o wearable
+        // Compartilha os dados com o wearable
         wearUtil.putData("/msg", b);
     }
 }

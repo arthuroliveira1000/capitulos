@@ -1,7 +1,7 @@
 package br.com.livroandroid.hellowsdl;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
@@ -10,7 +10,7 @@ import com.Wsdl2Code.WebServices.TempConvert.TempConvert;
 /**
  * Utiliza a classe TempConvert que foi gerada por: http://www.wsdl2code.com
  */
-public class CelsiusToFahrenheitActivity extends ActionBarActivity {
+public class CelsiusToFahrenheitActivity extends AppCompatActivity {
     private EditText tCelcius;
     private EditText tFahrenheit;
 

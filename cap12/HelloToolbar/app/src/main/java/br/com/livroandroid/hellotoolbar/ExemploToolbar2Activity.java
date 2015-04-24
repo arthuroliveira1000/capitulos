@@ -2,7 +2,7 @@ package br.com.livroandroid.hellotoolbar;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +18,7 @@ import android.widget.Toast;
  *
  * 4) Resultado: Ambas Action Bar e Toolbar estão no layout.
  */
-public class ExemploToolbar2Activity extends ActionBarActivity {
+public class ExemploToolbar2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

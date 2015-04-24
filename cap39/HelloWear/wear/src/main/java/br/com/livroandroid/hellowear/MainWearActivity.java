@@ -27,21 +27,25 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
 
     private static final String TAG = "wear";
     private TextView mTextView;
-    private WearUtil wearUtil;
     private ImageView img;
+    private WearUtil wearUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_wear);
-        final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
+        setContentView(R.layout.activity_main_wear_boxinset);
+
+        /*final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 mTextView = (TextView) stub.findViewById(R.id.text);
                 img = (ImageView) stub.findViewById(R.id.img);
             }
-        });
+        });*/
+
+        mTextView = (TextView) findViewById(R.id.text);
+        img = (ImageView) findViewById(R.id.img);
 
         wearUtil = new WearUtil(this);
         wearUtil.setDataListener(this);
@@ -77,7 +81,6 @@ public class MainWearActivity extends Activity implements DataApi.DataListener, 
                         @Override
                         public void run() {
                             mTextView.setText(msg + "\nCount: " + count);
-                            // Altera o fundo do layout com o Bitmap
                             img.setImageBitmap(bitmap);
                         }
                     });

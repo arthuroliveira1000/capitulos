@@ -1,7 +1,7 @@
 package br.com.livroandroid.hellowsdl;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -18,7 +18,7 @@ import java.net.URL;
 /**
  * Demonstra como utilizar a lib KSOAP
  */
-public class CelsiusToFahrenheitKSoapActivity extends ActionBarActivity {
+public class CelsiusToFahrenheitKSoapActivity extends AppCompatActivity {
     private static final String URL = "http://www.w3schools.com/webservices/CelsiusToFahrenheit";
     private EditText tCelcius;
     private EditText tFahrenheit;

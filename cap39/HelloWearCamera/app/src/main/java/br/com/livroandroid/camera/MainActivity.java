@@ -52,19 +52,18 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.btEnviarFoto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                wearUtil.sendMessage("/oi", new byte[]{1});
 
+                // Valida se o arquivo existe
                 if (file != null && file.exists()) {
-                    Log.d("foto", file.getAbsolutePath());
-
+                    // Manda a foto reduzida com 100x100 pixels
                     int w = 100;
                     int h = 100;
                     Bitmap bitmap = ImageResizeUtils.getResizedImage(Uri.fromFile(file), w, h, false);
 
-                    // Converte o btmap para Asset
-                    Asset asset = livroandroid.lib.wear.WearBitmapUtil.getAssetFromBitmap(bitmap);
+                    // Converte o bitmap para Asset
+                    Asset asset = wearUtil.getAssetFromBitmap(bitmap);
 
-                    // Envia o assert para o relogio
+                    // Envia o asset para o relogio
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("foto", asset);
                     wearUtil.putData("/foto", bundle);

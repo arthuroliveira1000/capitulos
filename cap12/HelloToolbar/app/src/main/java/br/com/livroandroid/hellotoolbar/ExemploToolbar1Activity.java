@@ -1,7 +1,7 @@
 package br.com.livroandroid.hellotoolbar;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +21,7 @@ import android.widget.Toast;
  *
  * 4) De resto pode usar os métodos da action bar normalmente.
  */
-public class ExemploToolbar1Activity extends ActionBarActivity {
+public class ExemploToolbar1Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

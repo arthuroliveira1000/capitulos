@@ -1,7 +1,7 @@
 package br.com.livroandroid.hellowsdl;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -19,7 +19,7 @@ import livroandroid.lib.utils.XMLUtils;
 /**
  * Demonstra como fazer uma requisição do tipo POST
  */
-public class CelsiusToFahrenheitPostActivity extends ActionBarActivity {
+public class CelsiusToFahrenheitPostActivity extends AppCompatActivity {
     String URL = "http://www.w3schools.com/webservices/tempconvert.asmx/CelsiusToFahrenheit";
     private EditText tCelcius;
     private EditText tFahrenheit;
