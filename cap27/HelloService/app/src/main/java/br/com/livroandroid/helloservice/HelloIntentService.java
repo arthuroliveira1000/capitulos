@@ -1,8 +1,11 @@
 package br.com.livroandroid.helloservice;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.content.Intent;
 import android.util.Log;
+
+import livroandroid.lib.utils.NotificationUtil;
 
 /**
  * Created by Ricardo Lecheta on 15/03/2015.
@@ -25,6 +28,7 @@ public class HelloIntentService extends IntentService {
             Log.d(TAG, "ExemploServico executando... " + count);
             count++;
         }
+        NotificationUtil.create(this,1,new Intent(this,MainActivity.class),R.mipmap.ic_launcher,"Fim","Olá");
         Log.d(TAG, "ExemploServico fim.");
     }
     private void fazAlgumaCoisa() {
