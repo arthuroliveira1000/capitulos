@@ -36,7 +36,7 @@ public class MainMobileActivity extends BaseActivity {
         wearUtil.disconnect();
     }
 
-    public void onClickSendMessage(View view) {
+    public void onClickSendMessage(View view)
         count++;
         wearUtil.sendMessage("/msg", new byte[]{(byte) count});
     }
