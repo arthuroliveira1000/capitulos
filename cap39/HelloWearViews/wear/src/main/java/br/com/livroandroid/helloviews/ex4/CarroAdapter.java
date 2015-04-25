@@ -16,11 +16,11 @@ import br.com.livroandroid.shared.Carro;
 /**
  * Created by ricardo on 19/04/15.
  */
-public class HelloAdapter extends WearableListView.Adapter {
+public class CarroAdapter extends WearableListView.Adapter {
     private List<Carro> carros;
     private final LayoutInflater mInflater;
 
-    public HelloAdapter(Context context, List<Carro> carros) {
+    public CarroAdapter(Context context, List<Carro> carros) {
         mInflater = LayoutInflater.from(context);
         this.carros = carros;
     }
