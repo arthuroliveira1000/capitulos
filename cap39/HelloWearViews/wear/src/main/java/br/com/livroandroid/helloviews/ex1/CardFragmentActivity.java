@@ -5,19 +5,15 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.wearable.view.CardFragment;
-import android.support.wearable.view.WatchViewStub;
-import android.widget.TextView;
 
 import br.com.livroandroid.helloviews.R;
 
-public class CardViewActivity extends Activity {
-
-    private TextView mTextView;
+public class CardFragmentActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_view);
+        setContentView(R.layout.activity_card_fragment);
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

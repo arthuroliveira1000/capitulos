@@ -10,8 +10,8 @@ import android.widget.TextView;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 
-import br.com.livroandroid.helloviews.ex1.CardViewActivity;
-import br.com.livroandroid.helloviews.ex2.MyCardViewActivity;
+import br.com.livroandroid.helloviews.ex1.CardFragmentActivity;
+import br.com.livroandroid.helloviews.ex2.CustomCardFragmentActivity;
 import br.com.livroandroid.helloviews.ex3.CardFrameActivity;
 import br.com.livroandroid.helloviews.ex4.HelloListViewActivity;
 import br.com.livroandroid.helloviews.ex5.HelloViewPagerActivity;
@@ -58,10 +58,10 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
         if("/Notification".equals(msg)) {
             Log.d(TAG, "AH");
             NotificationUtil.create(this, R.mipmap.ic_launcher, "Livro Android", "Olá Wear");
-        } else if("/CardView".equals(msg)) {
-            startActivity(new Intent(this,CardViewActivity.class));
-        } else if("/CustomCardView".equals(msg)) {
-            startActivity(new Intent(this,MyCardViewActivity.class));
+        } else if("/CardFragment".equals(msg)) {
+            startActivity(new Intent(this,CardFragmentActivity.class));
+        } else if("/CustomCardFragment".equals(msg)) {
+            startActivity(new Intent(this,CustomCardFragmentActivity.class));
         } else if("/CardFrame".equals(msg)) {
             startActivity(new Intent(this,CardFrameActivity.class));
         } else if("/ListView".equals(msg)) {

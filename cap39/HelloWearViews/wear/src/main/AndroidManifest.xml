@@ -18,8 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ex1.CardViewActivity" />
-        <activity android:name=".ex2.MyCardViewActivity" />
+        <activity android:name=".ex1.CardFragmentActivity" />
+        <activity android:name=".ex2.CustomCardFragmentActivity" />
         <activity android:name=".ex3.CardFrameActivity" />
         <activity android:name=".ex4.HelloListViewActivity" />
         <activity android:name=".ex4.CarroActivity" />
