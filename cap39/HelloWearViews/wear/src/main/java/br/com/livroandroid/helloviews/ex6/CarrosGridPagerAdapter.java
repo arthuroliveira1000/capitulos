@@ -3,7 +3,7 @@ package br.com.livroandroid.helloviews.ex6;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.support.wearable.view.CardFragment;
+import android.os.Bundle;
 import android.support.wearable.view.FragmentGridPagerAdapter;
 import android.view.LayoutInflater;
 
@@ -40,8 +40,8 @@ public class CarrosGridPagerAdapter extends FragmentGridPagerAdapter {
         }
         CarroCardFragment card = new CarroCardFragment();
         Bundle args = new Bundle();
-        args.putString("nome",c.nome);
-        args.putInt("img",c.img);
+        args.putString("nome", c.nome);
+        args.putInt("img", c.img);
         card.setArguments(args);
         //CardFragment card = CardFragment.create("Carro", c.nome, c.img);
         return card;
