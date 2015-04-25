@@ -14,23 +14,13 @@ import livroandroid.lib.wear.WearUtil;
  * Created by ricardo on 19/04/15.
  */
 public class HelloGridViewPagerActivity extends Activity {
-    private GridViewPager viewPager;
-    private WearUtil wearUtil;
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello_gridviewpager);
-
-        wearUtil = new WearUtil(this);
-
-        viewPager =
-                (GridViewPager) findViewById(R.id.viewPager);
-
         List<Carro> classicos = Carro.getListClassicos();
         List<Carro> esportivos = Carro.getListEsportivos();
         List<Carro> luxo = Carro.getListLuxo();
-
+        GridViewPager viewPager = (GridViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(new CarrosGridPagerAdapter(this, getFragmentManager(), classicos, esportivos, luxo));
     }
 }
