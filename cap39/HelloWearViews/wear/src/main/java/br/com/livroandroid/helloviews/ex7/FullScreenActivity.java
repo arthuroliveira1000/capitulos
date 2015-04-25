@@ -10,8 +10,6 @@ import android.widget.TextView;
 import br.com.livroandroid.helloviews.R;
 
 public class FullScreenActivity extends Activity {
-
-    private DismissOverlayView mDismissOverlay;
     private GestureDetector mDetector;
 
     @Override
@@ -19,15 +17,14 @@ public class FullScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen);
 
-        // Obtain the DismissOverlayView element
-        mDismissOverlay = (DismissOverlayView) findViewById(R.id.dismiss_overlay);
-        mDismissOverlay.setIntroText("Para sair, clique e segure.");
-        mDismissOverlay.showIntroIfNecessary();
+        final DismissOverlayView  d = (DismissOverlayView) findViewById(R.id.dismiss_overlay);
+        d.setIntroText("Para sair, clique e segure.");
+        d.showIntroIfNecessary();
 
         // Configure a gesture detector
         mDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             public void onLongPress(MotionEvent ev) {
-                mDismissOverlay.show();
+                d.show();
             }
         });
     }

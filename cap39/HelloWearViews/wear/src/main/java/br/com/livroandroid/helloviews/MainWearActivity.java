@@ -17,6 +17,7 @@ import br.com.livroandroid.helloviews.ex4.HelloListViewActivity;
 import br.com.livroandroid.helloviews.ex5.HelloViewPagerActivity;
 import br.com.livroandroid.helloviews.ex6.HelloGridViewPagerActivity;
 import br.com.livroandroid.helloviews.ex7.FullScreenActivity;
+import br.com.livroandroid.helloviews.ex8.ConfirmationDelayedActivity;
 import livroandroid.lib.utils.NotificationUtil;
 import livroandroid.lib.wear.WearUtil;
 
@@ -74,6 +75,8 @@ public class MainWearActivity extends Activity implements MessageApi.MessageList
             startActivity(new Intent(this,HelloGridViewPagerActivity.class));
         } else if("/Full Screen".equals(msg)) {
             startActivity(new Intent(this,FullScreenActivity.class));
+        } else if("/Delayed Confirmation".equals(msg)) {
+            startActivity(new Intent(this,ConfirmationDelayedActivity.class));
         } else if("/Confirmation Success".equals(msg)) {
             Intent intent = new Intent(this, ConfirmationActivity.class);
             intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,

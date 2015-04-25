@@ -35,7 +35,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
                 "ViewPager",
                 "GridViewPager",
                 "Full Screen",
-                "Confirmation Delayed",
+                "Delayed Confirmation",
                 "Confirmation Success",
                 "Confirmation Error",
                 "Sair"};
