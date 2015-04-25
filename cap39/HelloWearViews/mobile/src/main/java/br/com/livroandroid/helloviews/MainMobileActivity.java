@@ -29,7 +29,7 @@ public class MainMobileActivity extends BaseActivity implements AdapterView.OnIt
         String[] items = new String[]{
                 "Notification",
                 "CardFragment",
-                "CustomFragmentView",
+                "CustomCardFragment",
                 "CardFrame",
                 "ListView",
                 "ViewPager",
