@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Tela em Full Screen"
-        android:textColor="#000000" />
+        />
 
     <android.support.wearable.view.DismissOverlayView
         android:id="@+id/dismiss_overlay"
