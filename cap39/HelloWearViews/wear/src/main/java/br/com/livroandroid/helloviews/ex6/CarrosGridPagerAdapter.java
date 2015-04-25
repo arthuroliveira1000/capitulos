@@ -49,12 +49,12 @@ public class CarrosGridPagerAdapter extends FragmentGridPagerAdapter {
         } else if(col == 2) {
             c = luxo.get(row);
         }
-        /*CarroCardFragment card = new CarroCardFragment();
+        CarroCardFragment card = new CarroCardFragment();
         Bundle args = new Bundle();
         args.putString("nome",c.nome);
         args.putInt("img",c.img);
-        card.setArguments(args);*/
-        CardFragment card = CardFragment.create("Carro", c.nome, c.img);
+        card.setArguments(args);
+        //CardFragment card = CardFragment.create("Carro", c.nome, c.img);
         return card;
     }
 

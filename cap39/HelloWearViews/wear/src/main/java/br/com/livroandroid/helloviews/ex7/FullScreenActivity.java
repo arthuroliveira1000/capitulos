@@ -1,6 +1,7 @@
 package br.com.livroandroid.helloviews.ex7;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.wearable.view.DismissOverlayView;
 import android.view.GestureDetector;
@@ -18,6 +19,9 @@ public class FullScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen);
+
+        SharedPreferences mPrefs = getSharedPreferences("android.support.wearable.DismissOverlay", 0);
+            mPrefs.edit().putBoolean("first_run", false).apply();
 
         // Obtain the DismissOverlayView element
         mDismissOverlay = (DismissOverlayView) findViewById(R.id.dismiss_overlay);
