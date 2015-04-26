@@ -1,10 +1,7 @@
 package br.com.livroandroid.wearnotification;
 
-import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,7 +47,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 createStacksNotification();
             } else if("Remote Input".equals(item)) {
                 Intent intent = new Intent(this, ReplyActivity.class);
-                NotificationWearUtil.createRemoteInput(this,intent);
+                NotificationWearUtil.createRemoteInputNotification(this, intent);
             }
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), "Erro :" + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -62,8 +59,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         NotificationUtil.createStackNotification(this,2,"grupoId",null,R.mipmap.ic_launcher,"Título 2","Mensagem 2");
         NotificationUtil.createStackNotification(this,3,"grupoId",null,R.mipmap.ic_launcher,"Título 3","Mensagem 3");
     }
-
-
 
     @Override
     protected void onResume() {

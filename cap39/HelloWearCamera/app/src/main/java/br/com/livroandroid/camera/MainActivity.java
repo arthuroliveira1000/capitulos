@@ -36,12 +36,13 @@ public class MainActivity extends BaseActivity {
 
         imgView = (ImageView) findViewById(R.id.imagem);
 
+        // Cria o caminho do arquivo no sdcard
+        // /storage/sdcard/Android/data/br.com.livroandroid.multimidia/files/Pictures/foto.jpg
+        file = SDCardUtils.getPrivateFile(getBaseContext(), "foto.jpg", Environment.DIRECTORY_PICTURES);
+
         findViewById(R.id.btAbrirCamera).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Cria o caminho do arquivo no sdcard
-                // /storage/sdcard/Android/data/br.com.livroandroid.multimidia/files/Pictures/foto.jpg
-                file = SDCardUtils.getPrivateFile(getBaseContext(), "foto.jpg", Environment.DIRECTORY_PICTURES);
                 // Chama a intent informando o arquivo para salvar a foto
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
@@ -56,8 +57,8 @@ public class MainActivity extends BaseActivity {
                 // Valida se o arquivo existe
                 if (file != null && file.exists()) {
                     // Manda a foto reduzida com 100x100 pixels
-                    int w = 100;
-                    int h = 100;
+                    int w = 200;
+                    int h = 200;
                     Bitmap bitmap = ImageResizeUtils.getResizedImage(Uri.fromFile(file), w, h, false);
 
                     // Converte o bitmap para Asset

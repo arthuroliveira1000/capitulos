@@ -13,6 +13,13 @@ import livroandroid.lib.utils.NotificationUtil;
  * Created by ricardo on 21/04/15.
  */
 public class HelloListenerService extends WearableListenerService {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d("wear", "HelloListenerService.onCreate()");
+    }
+
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);

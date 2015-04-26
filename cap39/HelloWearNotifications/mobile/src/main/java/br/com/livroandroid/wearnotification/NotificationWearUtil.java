@@ -63,7 +63,7 @@ public class NotificationWearUtil {
         nm.notify(1, notification);
     }
 
-    public static void createRemoteInput(Context context,Intent replyIntent) {
+    public static void createRemoteInputNotification(Context context, Intent replyIntent) {
         // Intent para executar ao responder
         PendingIntent replyPendingIntent =
                 PendingIntent.getActivity(context, 0, replyIntent,
