@@ -26,7 +26,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         wearUtil = new WearUtil(this);
 
         String[] items = new String[]{
-                "Simples",
                 "Pages Notification",
                 "Stacking Notifications",
                 "Remote Input"

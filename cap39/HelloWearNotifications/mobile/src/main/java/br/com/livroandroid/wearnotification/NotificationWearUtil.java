@@ -29,33 +29,10 @@ public class NotificationWearUtil {
                         .setContentText("Segunda mensagem")
                         .build();
 
-        // Página 3
-        NotificationCompat.BigTextStyle bitStyle = new NotificationCompat.BigTextStyle();
-        bitStyle.setBigContentTitle("Página 3")
-                .bigText("BigStyle texto aqui\nTexto bem grande...");
-        Notification page3 =
-                new NotificationCompat.Builder(context)
-                        .setStyle(bitStyle)
-                        .build();
-
-        // Página 4
-        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-        inboxStyle.setBigContentTitle("Página 4");
-        for (int i=0;i>3;i++) {
-            inboxStyle.addLine("Mensagem " + i);
-        }
-        inboxStyle.setSummaryText("Várias mensagens");
-        Notification page4 =
-                new NotificationCompat.Builder(context)
-                        .setStyle(inboxStyle)
-                        .build();
-
         // Cria as páginas
         Notification notification = notificationBuilder
                 .extend(new NotificationCompat.WearableExtender()
-                        .addPage(page2)
-                        .addPage(page3)
-                        .addPage(page4))
+                        .addPage(page2))
                 .build();
 
         // Dispara a notificação
