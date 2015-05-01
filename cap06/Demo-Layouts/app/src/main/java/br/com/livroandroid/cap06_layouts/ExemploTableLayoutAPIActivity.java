@@ -48,7 +48,7 @@ public class ExemploTableLayoutAPIActivity extends Activity {
 		// Linha 3
 		TableRow linha3 = new TableRow(this);
 		linha3.setGravity(Gravity.RIGHT);
-		// Bot�o alinhado a direita
+		// Botão alinhado a direita
 		Button ok = new Button(this);
 		ok.setText(" Login ");
 		linha3.addView(ok);

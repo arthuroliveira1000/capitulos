@@ -16,7 +16,8 @@ public class ExemploScrollViewActivity extends Activity {
 		for (int i = 0; i < 100; i++) {
 
 			// Instancia o TextView inflando o arquivo de layout
-			TextView text = (TextView) LayoutInflater.from(this).inflate(R.layout.inflate_textview, layout, false);
+			LayoutInflater inflater = LayoutInflater.from(this);
+			TextView text = (TextView) inflater.inflate(R.layout.inflate_textview, layout, false);
 
 			// Instancia o TextView pela API
 //			TextView text = new TextView(this);
