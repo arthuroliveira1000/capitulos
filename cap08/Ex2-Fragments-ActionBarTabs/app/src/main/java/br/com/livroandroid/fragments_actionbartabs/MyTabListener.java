@@ -20,9 +20,6 @@ public class MyTabListener implements ActionBar.TabListener {
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         // Troca o fragment dinamicamente ao clicar na Tab
-        //ft.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
-        //ft.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
-        ft.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
         ft.replace(R.id.layoutFrag, this.frag, null);
     }
 

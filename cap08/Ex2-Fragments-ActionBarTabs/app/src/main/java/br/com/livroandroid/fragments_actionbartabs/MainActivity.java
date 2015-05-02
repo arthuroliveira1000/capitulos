@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.addTab(tab2);
         // Tab 3
         ActionBar.Tab tab3 = actionBar.newTab().setText("Frag 3");
-        tab3.setTabListener(new MyTabListener(this, new Fragment2()));
+        tab3.setTabListener(new MyTabListener(this, new Fragment3()));
         actionBar.addTab(tab3);
     }
 }

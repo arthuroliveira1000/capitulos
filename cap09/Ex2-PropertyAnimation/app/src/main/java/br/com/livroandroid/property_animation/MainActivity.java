@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private static final String[] ops = new String[]{
             "Alpha - ValueAnimator",
-            "TextView - ValueAnimator",
             "Alpha - ObjectAnimator",
             "Rotate - ObjectAnimator",
             "Scale - ObjectAnimator",
@@ -21,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             "AnimatorSet",
             "ViewPropertyAnimator",
             "AnimatorListener",
+            "TextView - ValueAnimator",
             "Sair"};
 
     @Override
@@ -40,28 +40,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(new Intent(this, ExemploValueAnimator.class));
                 break;
             case 1:
-                startActivity(new Intent(this, ExemploValueAnimatorTextViewActivity.class));
-                break;
-            case 2:
                 startActivity(new Intent(this, AlphaAnim.class));
                 break;
-            case 3:
+            case 2:
                 startActivity(new Intent(this, RotateAnim.class));
                 break;
-            case 4:
+            case 3:
                 startActivity(new Intent(this, ScaleAnim.class));
                 break;
-            case 5:
+            case 4:
                 startActivity(new Intent(this, TranslateAnim.class));
                 break;
-            case 6:
+            case 5:
                 startActivity(new Intent(this, ExemploAnimatorSet.class));
                 break;
-            case 7:
+            case 6:
                 startActivity(new Intent(this, ExemploViewPropertyAnimatorActivity.class));
                 break;
-            case 8:
+            case 7:
                 startActivity(new Intent(this, ExemploAnimatorListenerApagarTela.class));
+                break;
+            case 8:
+                startActivity(new Intent(this, ExemploValueAnimatorTextViewActivity.class));
                 break;
             default:
                 finish();

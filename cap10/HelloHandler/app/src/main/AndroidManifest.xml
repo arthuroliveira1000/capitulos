@@ -45,6 +45,14 @@
                 android:value="br.com.livroandroid.handler.MainActivity" />
         </activity>
         <activity
+            android:name=".ReDownloadImagemActivity"
+            android:label="@string/title_activity_download_imagem"
+            android:parentActivityName="br.com.livroandroid.handler.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.livroandroid.handler.MainActivity" />
+        </activity>
+        <activity
             android:name=".ContadorActivity"
             android:label="@string/title_activity_contador"
             android:parentActivityName="br.com.livroandroid.handler.MainActivity" >

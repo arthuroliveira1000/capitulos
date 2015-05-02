@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
         String[] items = new String[] {
                 "Handler - message",
                 "Handler - runnable",
-                "Contador",
                 "Download imagem - Thread",
+                "Re-Download imagem - Handler",
+                "Contador",
         };
 
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -49,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(new Intent(getBaseContext(),DemoHandlerRunnableActivity.class));
                             break;
                         case 2:
-                            startActivity(new Intent(getBaseContext(),ContadorActivity.class));
-                            break;
-                        case 3:
                             startActivity(new Intent(getBaseContext(),DownloadImagemActivity.class));
                             break;
-
+                        case 3:
+                            startActivity(new Intent(getBaseContext(),ReDownloadImagemActivity.class));
+                            break;
+                        case 4:
+                            startActivity(new Intent(getBaseContext(),ContadorActivity.class));
+                            break;
 
                         default:
                             finish();

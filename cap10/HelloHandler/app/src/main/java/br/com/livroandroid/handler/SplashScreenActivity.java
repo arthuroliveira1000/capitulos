@@ -25,6 +25,6 @@ public class SplashScreenActivity extends Activity {
                 // Fecha a activity da splash
                 finish();
             }
-        },500);
+        },2000);
     }
 }
