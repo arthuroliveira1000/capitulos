@@ -57,6 +57,14 @@
                 android:value="br.com.livroandroid.hellomaterial.MainActivity" />
         </activity>
         <activity
+            android:name=".ExemploRevealEffectFABActivity"
+            android:label="@string/title_activity_exemplo_floating_button"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.livroandroid.hellomaterial.MainActivity" />
+        </activity>
+        <activity
             android:name=".ExemploRippleActivity"
             android:label="@string/title_activity_exemplo_ripple"
             android:parentActivityName=".MainActivity">

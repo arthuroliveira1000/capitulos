@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 "Handler - message",
                 "Handler - runnable",
                 "Download imagem - Thread",
-                "Re-Download imagem",
+                "Re-Download imagem - Handler",
                 "Contador",
         };
 

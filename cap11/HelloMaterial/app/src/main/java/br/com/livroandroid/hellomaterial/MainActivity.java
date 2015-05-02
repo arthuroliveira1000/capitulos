@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 "RecyclerView",
                 "RecyclerView Add/Remove",
                 "Reveal Effect",
+                "Reveal Effect + FAB",
                 "Pallete",
                 "Activity Transition",
         };
@@ -70,9 +71,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     show(new Intent(this, ExemploRevealEffectActivity.class));
                     break;
                 case 8:
-                    show(new Intent(this, ExemploPaletteActivity.class));
+                    show(new Intent(this, ExemploRevealEffectFABActivity.class));
                     break;
                 case 9:
+                    show(new Intent(this, ExemploPaletteActivity.class));
+                    break;
+                case 10:
                     show(new Intent(this, ExemploActivityTransition.class));
                     break;
 

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,7 +31,10 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_exemplo_recycler_view);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -55,9 +61,17 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
                 intent.putExtra("imgPlaneta", p.img);
                 String key = getString(R.string.transition_key);
 
-                ActivityOptions opts = ActivityOptions.makeSceneTransitionAnimation(getActivity(), img, key);
+                // Somente Android 5.0
+                //ActivityOptions opts = ActivityOptions.makeSceneTransitionAnimation(getActivity(), img, key);
                 //ActivityOptions opts = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.shake, R.anim.abc_slide_in_top);
+                //startActivity(intent, opts.toBundle());
+
+                ActivityOptions opts = ActivityOptions.makeSceneTransitionAnimation(getActivity(), img, key);
                 startActivity(intent, opts.toBundle());
+
+                // Compat
+                //ActivityOptionsCompat opts = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), img, key);
+                //ActivityCompat.startActivity(getActivity(), intent, opts.toBundle());
             }
         };
     }

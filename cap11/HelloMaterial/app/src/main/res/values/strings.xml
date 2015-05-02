@@ -8,7 +8,7 @@
     <string name="title_activity_exemplo_elevation">Elevation</string>
     <string name="title_activity_exemplo_card_view">CardView</string>
     <string name="title_activity_exemplo_recycler_view">RecyclerView</string>
-    <string name="title_activity_exemplo_floating_button">Floating Button</string>
+    <string name="title_activity_exemplo_floating_button">Floating Action Button</string>
     <string name="title_activity_exemplo_ripple">Ripple</string>
     <string name="title_activity_exemplo_state_list_animator">StateListAnimator</string>
     <string name="title_activity_exemplo_reveal_effect">Reveal Effect</string>
