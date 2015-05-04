@@ -1,4 +1,4 @@
-package br.livro.android.pushserver;
+
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -27,7 +27,7 @@ public class SendPushMessage {
 	public static void main(String[] args) throws IOException {
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("msg", "Olá tudo bem ?");
+		params.put("msg", "Olá ao vivo");
 		String result = post(API_KEY, DEVICE_REGISTRATION_ID, params );
 		System.out.println(result);
 	}
