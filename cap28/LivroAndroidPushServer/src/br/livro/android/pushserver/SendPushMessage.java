@@ -16,20 +16,18 @@ import javax.net.ssl.SSLSession;
  * @author Ricardo Lecheta
  * 
  */
-public class EnviarMensagemManualParaDevice {
+public class SendPushMessage {
 
 	// Registration id do dispositivo
-	private static String DEVICE_REGISTRATION_ID = "APA91bFvZ_NqdmAe5llufNx-zuof7LyethRKYQNMEKKOthb_r6ZCTmcq1_PxkkQLVQ7AQkSrumENQWuwwB_RqEFymTDw5T5FjbVBnEqiDg8HGtVzmo5R1yyl31VXHJc3QG_9TWdTCtQDOv1kG2CEL3vUuyqrQy7zDQ";
+	private static String DEVICE_REGISTRATION_ID = "APA91bEq6-RpN-ULVI1-J5gxhRjqchSJo3InhHGkyPgbdsXWumsLOs3eOw8Gjtp5Ww-nS25PwGWy76LQezcpeFrcabXAanuar3JOfhHmMCvbEvpX7ILlpDyXYKvon07Tnt-tnng8XPkSUk8I5j4JYg9jhL45uEa5DQ";
 	
 	// Chave criada no Console. Menu > API Access > (create new server key)
 	private static final String API_KEY = "AIzaSyCMCGxjvjeoAmI8jllDH4388EJI4qJFZsU";
 
 	public static void main(String[] args) throws IOException {
 		
-		DEVICE_REGISTRATION_ID = "APA91bGZNbjA2zeXelrPA26Pe3kP7wHAu6pYw23fp6vNuHYwroGHn5mTvRqEJVVPOhqX4f0UeIBcbs-Hoi0KAr5lBkRUrLPAiBsy4-5Bb2ByF1zadScjpDwBdBe49tVDDeIyX9ROeek3KsuZwZQ94ziO3NtpQEtAQA";
-		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("msg", "Olá tudo bem legal?");
+		params.put("msg", "Olá tudo bem ?");
 		String result = post(API_KEY, DEVICE_REGISTRATION_ID, params );
 		System.out.println(result);
 	}
