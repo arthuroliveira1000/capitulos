@@ -4,7 +4,6 @@
 
     <ImageView
         android:id="@+id/img"
-        android:transitionName="@string/transition_key"
         android:src="@drawable/planeta_03_terra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

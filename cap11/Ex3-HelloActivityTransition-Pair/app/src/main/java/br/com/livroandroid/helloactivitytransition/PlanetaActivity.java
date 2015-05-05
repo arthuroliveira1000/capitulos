@@ -14,21 +14,10 @@ public class PlanetaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-        //getWindow().setEnterTransition(new Explode());
-        //getWindow().setExitTransition(new Explode());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planeta);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
-    @Override
-    public void finish() {
-        super.finish();
-        // Para voltar utiliza a animação da esquerda para a direita
-        //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-    }
-
 }
