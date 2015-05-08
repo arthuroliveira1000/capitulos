@@ -54,7 +54,7 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
             public void onClickPlaneta(View view, int idx) {
                 List<Planeta> planetas = Planeta.getPlanetas();
                 Planeta p = planetas.get(idx);
-                Toast.makeText(getBaseContext(), "Planeta: " + p.nome, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), "Planeta: " + p.nome, Toast.LENGTH_SHORT).show();
 
                 ImageView img = (ImageView) view.findViewById(R.id.img);
                 Intent intent = new Intent(getBaseContext(), PlanetaActivity.class);
