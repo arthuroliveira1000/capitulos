@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <!--   Cor primária da sua marca -->
         <item name="android:colorPrimary">@color/primary</item>
         <!--   Variação escura da cor primária para a status bar e contextual app bars -->

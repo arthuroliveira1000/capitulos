@@ -26,7 +26,6 @@ public class ExemploRecyclerViewAddRemoveActivity extends ExemploRecyclerViewAct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Deixa a lista vazia
         planetas = new ArrayList<Planeta>();
         recyclerView.setAdapter(adapter = new PlanetaAdapter(this, planetas, onClickPlaneta()));
     }
@@ -41,7 +40,7 @@ public class ExemploRecyclerViewAddRemoveActivity extends ExemploRecyclerViewAct
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add) {
-            // Pega um planeta random e adiciona novamente na lista
+            // Pega um planeta random e adiciona     na lista
             Planeta p = getRandomPlaneta();
             planetas.add(0,p);
             adapter.notifyItemInserted(0);
@@ -54,7 +53,6 @@ public class ExemploRecyclerViewAddRemoveActivity extends ExemploRecyclerViewAct
             }
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

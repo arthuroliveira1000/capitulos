@@ -14,7 +14,7 @@ public class ExemploSpinnerActivity extends Activity {
             R.drawable.planeta_03_terra, R.drawable.planeta_04_marte, R.drawable.planeta_05_jupiter,
             R.drawable.planeta_06_saturno, R.drawable.planeta_07_urano, R.drawable.planeta_08_neptuno,
             R.drawable.planeta_09_plutao};
-    private String[] planetas = new String[]{"Mercúrio", "Venus", "Terra", "Marte", "Júpter",
+    private String[] planetas = new String[]{"Mercúrio", "Vênus", "Terra", "Marte", "Júpiter",
             "Saturno", "Urano", "Netuno", "Plutão"};
 
     @Override
