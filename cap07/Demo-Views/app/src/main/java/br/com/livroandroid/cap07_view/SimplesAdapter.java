@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class SimplesAdapter extends BaseAdapter {
-    private String[] planetas = new String[]{"Mercúrio", "Venus", "Terra", "Marte", "Júptier",
+    private String[] planetas = new String[]{"Mercúrio", "Vênus", "Terra", "Marte", "Júpiter",
             "Saturno", "Urano", "Netuno", "Plutão"};
     private Context context;
 
