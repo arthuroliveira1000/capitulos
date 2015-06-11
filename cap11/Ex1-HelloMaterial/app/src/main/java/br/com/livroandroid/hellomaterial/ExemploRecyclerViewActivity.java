@@ -49,15 +49,16 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
     }
 
     protected PlanetaAdapter.PlanetaOnClickListener onClickPlaneta() {
+        final Intent intent = new Intent(getBaseContext(), PlanetaActivity.class);
+
         return new PlanetaAdapter.PlanetaOnClickListener() {
             @Override
-            public void onClickPlaneta(View view, int idx) {
+            public void onClickPlaneta(PlanetaAdapter.PlanetasViewHolder holder, int idx) {
                 List<Planeta> planetas = Planeta.getPlanetas();
                 Planeta p = planetas.get(idx);
                 //Toast.makeText(getBaseContext(), "Planeta: " + p.nome, Toast.LENGTH_SHORT).show();
 
-                ImageView img = (ImageView) view.findViewById(R.id.img);
-                Intent intent = new Intent(getBaseContext(), PlanetaActivity.class);
+                ImageView img = holder.img;
                 intent.putExtra("imgPlaneta", p.img);
                 String key = getString(R.string.transition_key);
 

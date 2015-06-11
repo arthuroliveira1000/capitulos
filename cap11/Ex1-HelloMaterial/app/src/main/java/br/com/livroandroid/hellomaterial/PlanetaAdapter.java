@@ -21,7 +21,7 @@ public class PlanetaAdapter extends RecyclerView.Adapter<PlanetaAdapter.Planetas
     private final PlanetaOnClickListener onClickListener;
 
     public interface PlanetaOnClickListener {
-        public void onClickPlaneta(View view, int idx);
+        public void onClickPlaneta(PlanetasViewHolder holder, int idx);
     }
 
     public PlanetaAdapter(Context context, List<Planeta> planetas, PlanetaOnClickListener onClickListener) {
@@ -54,7 +54,7 @@ public class PlanetaAdapter extends RecyclerView.Adapter<PlanetaAdapter.Planetas
                 @Override
                 public void onClick(View v) {
                     // Chama o listener para informar que clicou no Planeta
-                    onClickListener.onClickPlaneta(holder.view, position);
+                    onClickListener.onClickPlaneta(holder, position);
                 }
             });
         }

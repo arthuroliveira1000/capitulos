@@ -29,4 +29,9 @@ public class ExemploFloatingButtonActivity extends AppCompatActivity {
     public void onClickFab1(View view) {
         Toast.makeText(this, "FAB 1", Toast.LENGTH_SHORT).show();
     }
+
+
+    public void onClickFab2(View view) {
+        Toast.makeText(this, "FAB 2 - Android Design Support Library", Toast.LENGTH_SHORT).show();
+    }
 }
