@@ -33,6 +33,8 @@
     <string name="remove">Remove</string>
     <string name="title_activity_exemplo_coordinator_layout">CoordinatorLayout
     </string>
+    <string name="title_activity_collapsing_toolbar">CollapsingToolbarActivity</string>
+    <string name="collapsing_toolbar_title">Intel Software Day 2015</string>
 
 
 </resources>

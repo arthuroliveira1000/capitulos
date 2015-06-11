@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String[] items = new String[]{
                 "Floating Action Button + Snackbar",
                 "CoordinatorLayout",
-
+                "RecyclerView + FAB",
+                "CollapsingToolbar"
         };
 
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -50,9 +52,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     show(new Intent(this, ExemploCoordinatorLayoutActivity.class));
                     break;
                 case 2:
-
+                    show(new Intent(this, ExemploRecyclerViewActivity.class));
                     break;
-
+                case 3:
+                    show(new Intent(this, CollapsingToolbarActivity.class));
+                    break;
 
                 default:
                     finish();

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,8 +13,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,6 +30,8 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
     protected RecyclerView recyclerView;
     protected List<Planeta> planetas;
     protected PlanetaAdapter adapter;
+    private View fab;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,7 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_exemplo_recycler_view);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null) {
             setSupportActionBar(toolbar);
         }
@@ -46,6 +55,31 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
 
         planetas = Planeta.getPlanetas();
         recyclerView.setAdapter(adapter = new PlanetaAdapter(this, planetas, onClickPlaneta()));
+
+        // FAB
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        fab = findViewById(R.id.btFab);
+        fab.startAnimation(animation);
+
+        final int fabMargin = getResources().getDimensionPixelSize(R.dimen.fab_margin);
+        final int toolbarHeight = Utils.getToolbarHeight(this);
+
+        // Scroll Up/Down
+        recyclerView.addOnScrollListener(new UpDownRecyclerScroll() {
+            @Override
+            public void show() {
+                toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+                toolbar.animate().alpha(1).setInterpolator(new DecelerateInterpolator(1)).start();
+                fab.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+            }
+
+            @Override
+            public void hide() {
+                toolbar.animate().translationY(-toolbarHeight).setInterpolator(new AccelerateInterpolator(2)).start();
+                toolbar.animate().alpha(0).setInterpolator(new AccelerateInterpolator(1)).start();
+                fab.animate().translationY(fab.getHeight() + fabMargin).setInterpolator(new AccelerateInterpolator(2)).start();
+            }
+        });
     }
 
     protected PlanetaAdapter.PlanetaOnClickListener onClickPlaneta() {
@@ -98,5 +132,17 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickFab(View view) {
+        Snackbar
+                .make(recyclerView, "Clicou no FAB mini.", Snackbar.LENGTH_LONG)
+                .setAction("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getBaseContext(), "OK!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .show();
     }
 }

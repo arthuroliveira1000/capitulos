@@ -48,6 +48,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name=".CollapsingToolbarActivity"
+            android:label="@string/title_activity_collapsing_toolbar"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.livroandroid.hellodesignsupportlib.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

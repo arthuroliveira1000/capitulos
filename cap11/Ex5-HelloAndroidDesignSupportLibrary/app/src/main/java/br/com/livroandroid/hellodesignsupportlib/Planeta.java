@@ -27,6 +27,11 @@ public class Planeta {
         planetas.add(new Planeta("Urano", R.drawable.planeta_07_urano));
         planetas.add(new Planeta("Netuno", R.drawable.planeta_08_neptuno));
         planetas.add(new Planeta("Plutão", R.drawable.planeta_09_plutao));
+
+        // Vamos aumentar um pouco a lista
+        planetas.addAll(planetas);
+        planetas.addAll(planetas);
+
         return planetas;
     }
 }
