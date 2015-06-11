@@ -1,8 +1,0 @@
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/classes/debug
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.0-1f2462004ea6bc4b2c44eb82159d6e258c60707e.jar
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/pre-dexed/debug/classes-6c19723e2a399fd2b0c1f64a724ce41534caba44.jar
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/pre-dexed/debug/classes-097ba0b42f548367162052bbc865c4ec5b9ae2f1.jar
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.0-421ef2576bf8fa171473c1f3362b0b1e37854e09.jar
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/pre-dexed/debug/classes-13a9533e0c6d1ef923a32507e7bb538e772cd8d5.jar
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/pre-dexed/debug/classes-0c827f513338a800c4e9c138a7ad8162525993a5.jar
-/home/ricardo/AndroidStudioProjects/LivroAndroid/capitulos/cap11/HelloMaterial/app/build/intermediates/pre-dexed/debug/classes-cf42541be74da877c4dbbd71de31130094ffb0f7.jar
