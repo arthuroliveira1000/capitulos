@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,16 +18,17 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-public class CollapsingToolbarActivity extends AppCompatActivity {
+public class ExemploCollapsingToolbarActivity extends AppCompatActivity{
     CollapsingToolbarLayout collapsingToolbar;
     RecyclerView recyclerView;
     PlanetaAdapter adapter;
     private List<Planeta> planetas;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collapsing_toolbar);
+        setContentView(R.layout.activity_exemplo_collapsing_toolbar);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);

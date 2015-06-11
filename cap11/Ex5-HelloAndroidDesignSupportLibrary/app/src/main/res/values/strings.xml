@@ -35,6 +35,7 @@
     </string>
     <string name="title_activity_collapsing_toolbar">CollapsingToolbarActivity</string>
     <string name="collapsing_toolbar_title">Intel Software Day 2015</string>
+    <string name="title_activity_tab">TabLayout</string>
 
 
 </resources>

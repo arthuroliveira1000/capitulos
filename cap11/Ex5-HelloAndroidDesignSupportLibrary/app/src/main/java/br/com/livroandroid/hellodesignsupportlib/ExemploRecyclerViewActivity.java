@@ -51,7 +51,10 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        //recyclerView.setHasFixedSize(true);
+        // Magic :-)
+        final int toolbarHeight = Utils.getToolbarHeight(this);
+        recyclerView.setPadding(recyclerView.getPaddingLeft(), toolbarHeight,
+                recyclerView.getPaddingRight(), recyclerView.getPaddingBottom());
 
         planetas = Planeta.getPlanetas();
         recyclerView.setAdapter(adapter = new PlanetaAdapter(this, planetas, onClickPlaneta()));
@@ -62,7 +65,6 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
         fab.startAnimation(animation);
 
         final int fabMargin = getResources().getDimensionPixelSize(R.dimen.fab_margin);
-        final int toolbarHeight = Utils.getToolbarHeight(this);
 
         // Scroll Up/Down
         recyclerView.addOnScrollListener(new UpDownRecyclerScroll() {

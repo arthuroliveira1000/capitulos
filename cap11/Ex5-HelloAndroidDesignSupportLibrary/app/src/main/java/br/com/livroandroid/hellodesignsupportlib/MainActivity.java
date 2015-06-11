@@ -1,16 +1,13 @@
 package br.com.livroandroid.hellodesignsupportlib;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -33,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 "Floating Action Button + Snackbar",
                 "CoordinatorLayout",
                 "RecyclerView + FAB",
+                "TabLayout",
                 "CollapsingToolbar"
         };
 
@@ -55,9 +53,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     show(new Intent(this, ExemploRecyclerViewActivity.class));
                     break;
                 case 3:
-                    show(new Intent(this, CollapsingToolbarActivity.class));
+                    show(new Intent(this, ExemploTabLayoutActivity.class));
                     break;
-
+                case 4:
+                    show(new Intent(this, ExemploCollapsingToolbarActivity.class));
+                    break;
                 default:
                     finish();
                     break;
