@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 "Elevation",
                 "Ripple",
                 "StateListAnimator",
-                "Floating Action Button",
+                "Floating Action Button + Snackbar",
+                "CoordinatorLayout",
                 "CardView",
                 "RecyclerView",
                 "RecyclerView Add/Remove",
                 "Reveal Effect",
-                "Reveal Effect + FAB",
                 "Pallete",
                 "Activity Transition",
         };
@@ -59,19 +59,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     show(new Intent(this, ExemploFloatingButtonActivity.class));
                     break;
                 case 4:
-                    show(new Intent(this, ExemploCardView.class));
+                    show(new Intent(this, ExemploCoordinatorLayoutActivity.class));
                     break;
                 case 5:
-                    show(new Intent(this, ExemploRecyclerViewActivity.class));
+                    show(new Intent(this, ExemploCardView.class));
                     break;
                 case 6:
-                    show(new Intent(this, ExemploRecyclerViewAddRemoveActivity.class));
+                    show(new Intent(this, ExemploRecyclerViewActivity.class));
                     break;
                 case 7:
-                    show(new Intent(this, ExemploRevealEffectActivity.class));
+                    show(new Intent(this, ExemploRecyclerViewAddRemoveActivity.class));
                     break;
                 case 8:
-                    show(new Intent(this, ExemploRevealEffectFABActivity.class));
+                    show(new Intent(this, ExemploRevealEffectActivity.class));
                     break;
                 case 9:
                     show(new Intent(this, ExemploPaletteActivity.class));

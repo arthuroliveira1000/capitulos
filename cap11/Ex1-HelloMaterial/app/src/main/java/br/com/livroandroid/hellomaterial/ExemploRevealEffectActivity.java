@@ -21,7 +21,7 @@ public class ExemploRevealEffectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 View img = findViewById(R.id.img);
-                RevealEffect.show(img, 800);
+                RevealEffect.show(img, 500);
             }
         };
     }
@@ -31,7 +31,7 @@ public class ExemploRevealEffectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 View img = findViewById(R.id.img);
-                RevealEffect.hide(img, 800);
+                RevealEffect.hide(img, 500);
             }
         };
     }

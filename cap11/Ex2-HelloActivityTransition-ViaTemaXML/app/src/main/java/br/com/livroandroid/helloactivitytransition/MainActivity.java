@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //ActivityCompat.startActivity(this, intent, opts.toBundle());
 
         // Passando parâmetros entre activities
-        ImageView img = (ImageView) findViewById(R.id.img);
+        ImageView img = (ImageView) view;
         String key = getString(R.string.transition_key);
         ActivityOptionsCompat opts = ActivityOptionsCompat.makeSceneTransitionAnimation(this, img, key);
         ActivityCompat.startActivity(this, intent, opts.toBundle());

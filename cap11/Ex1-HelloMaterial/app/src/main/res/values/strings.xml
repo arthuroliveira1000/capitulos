@@ -38,6 +38,8 @@
     <string name="ok7">OK 7</string>
     <string name="add">Add</string>
     <string name="remove">Remove</string>
+    <string name="title_activity_exemplo_coordinator_layout">CoordinatorLayout
+    </string>
 
 
 </resources>

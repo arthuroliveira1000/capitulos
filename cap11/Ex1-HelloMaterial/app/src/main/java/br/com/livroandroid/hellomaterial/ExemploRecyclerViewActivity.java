@@ -54,7 +54,6 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
         return new PlanetaAdapter.PlanetaOnClickListener() {
             @Override
             public void onClickPlaneta(PlanetaAdapter.PlanetasViewHolder holder, int idx) {
-                List<Planeta> planetas = Planeta.getPlanetas();
                 Planeta p = planetas.get(idx);
                 //Toast.makeText(getBaseContext(), "Planeta: " + p.nome, Toast.LENGTH_SHORT).show();
 
