@@ -28,6 +28,7 @@ import java.util.List;
 public class ExemploTabLayoutActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     private CoordinatorLayout coordinatorLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class ExemploTabLayoutActivity extends AppCompatActivity implements TabLa
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
+        viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
@@ -49,7 +50,7 @@ public class ExemploTabLayoutActivity extends AppCompatActivity implements TabLa
         tabLayout.setOnTabSelectedListener(this);
     }
 
-    void showToast(String msg) {
+    void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
@@ -60,6 +61,7 @@ public class ExemploTabLayoutActivity extends AppCompatActivity implements TabLa
 
         @Override
         public Fragment getItem(int position) {
+            // Sempre o mesmo fragment só para testar.
             return new PlanetaFragment();
         }
 
@@ -75,54 +77,9 @@ public class ExemploTabLayoutActivity extends AppCompatActivity implements TabLa
         }
     }
 
-    @SuppressLint("ValidFragment")
-    public static class PlanetaFragment extends Fragment {
-        PlanetaAdapter adapter;
-        private RecyclerView recyclerView;
-        private List<Planeta> planetas;
-
-        public PlanetaFragment() {
-
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.planeta_fragment, container, false);
-
-            recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            //recyclerView.setHasFixedSize(true);
-
-            planetas = Planeta.getPlanetas();
-            recyclerView.setAdapter(adapter = new PlanetaAdapter(getActivity(), planetas, onClickPlaneta()));
-
-            return view;
-        }
-
-        protected PlanetaAdapter.PlanetaOnClickListener onClickPlaneta() {
-            final Intent intent = new Intent(getActivity(), PlanetaActivity.class);
-
-            return new PlanetaAdapter.PlanetaOnClickListener() {
-                @Override
-                public void onClickPlaneta(PlanetaAdapter.PlanetasViewHolder holder, int idx) {
-                    Planeta p = planetas.get(idx);
-
-                    ImageView img = holder.img;
-                    intent.putExtra("imgPlaneta", p.img);
-                    String key = getString(R.string.transition_key);
-
-                    // Compat
-                    ActivityOptionsCompat opts = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), img, key);
-                    ActivityCompat.startActivity(getActivity(), intent, opts.toBundle());
-                }
-            };
-        }
-
-    }
-
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+        viewPager.setCurrentItem(tab.getPosition());
         Snackbar
                 .make(coordinatorLayout, "Tab: " + tab.getText(), Snackbar.LENGTH_LONG)
                 .setAction("Ok", new View.OnClickListener() {

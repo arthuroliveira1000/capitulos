@@ -91,16 +91,10 @@ public class ExemploRecyclerViewActivity extends AppCompatActivity {
             @Override
             public void onClickPlaneta(PlanetaAdapter.PlanetasViewHolder holder, int idx) {
                 Planeta p = planetas.get(idx);
-                //Toast.makeText(getBaseContext(), "Planeta: " + p.nome, Toast.LENGTH_SHORT).show();
 
                 ImageView img = holder.img;
                 intent.putExtra("imgPlaneta", p.img);
                 String key = getString(R.string.transition_key);
-
-                // Somente Android 5.0
-                //ActivityOptions opts = ActivityOptions.makeSceneTransitionAnimation(getActivity(), img, key);
-                //ActivityOptions opts = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.shake, R.anim.abc_slide_in_top);
-                //startActivity(intent, opts.toBundle());
 
                 ActivityOptions opts = ActivityOptions.makeSceneTransitionAnimation(getActivity(), img, key);
                 startActivity(intent, opts.toBundle());
